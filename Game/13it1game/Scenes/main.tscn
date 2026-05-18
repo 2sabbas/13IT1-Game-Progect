@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://snsg45akwsrk"]
+
+[ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="1_4lc31"]
+[ext_resource type="PackedScene" uid="uid://clbk2t1yjquv" path="res://Scenes/map.tscn" id="1_gie8b"]
+[ext_resource type="PackedScene" uid="uid://bo611jdvcqqmu" path="res://Scenes/bridge.tscn" id="3_7lgfh"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("1_gie8b")]
+
+[node name="bridge" parent="." instance=ExtResource("3_7lgfh")]
+position = Vector2(528, 301)
+
+[node name="Player" parent="." instance=ExtResource("1_4lc31")]
+position = Vector2(111, 267)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
