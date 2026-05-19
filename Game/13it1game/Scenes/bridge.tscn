@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo611jdvcqqmu"]
+[gd_scene load_steps=6 format=3 uid="uid://bo611jdvcqqmu"]
 
 [ext_resource type="Script" path="res://Scripts/bridge.gd" id="1_b5nws"]
 [ext_resource type="Texture2D" uid="uid://c38ehxv8ex8d" path="res://Assets/Map/8x4 bridge.png" id="1_vsd4u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxjla"]
+size = Vector2(128, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3uvd"]
 size = Vector2(128, 7)
@@ -14,6 +17,11 @@ script = ExtResource("1_b5nws")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vsd4u")
+
+[node name="Selectable Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Selectable Area"]
+shape = SubResource("RectangleShape2D_nxjla")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 28.5)

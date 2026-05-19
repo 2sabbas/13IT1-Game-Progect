@@ -45,10 +45,11 @@ func _select_objects():
 	
 	var objects = get_tree().get_nodes_in_group("object")
 	
-	for body in selection_area.get_overlapping_bodies():
-		if body.is_in_group("object"):
-			body.selected = true
-			objects.erase(body)
+	for body in selection_area.get_overlapping_areas():
+		
+		if body.get_parent().is_in_group("object"):
+			body.get_parent().selected = true
+			objects.erase(body.get_parent())
 	
 	for body in objects:
 		body.selected = false
