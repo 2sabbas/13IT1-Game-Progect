@@ -38,15 +38,15 @@ func _select_objects():
 	var areaPosition = get_rect_start_position()
 	
 	selection_area.global_position = areaPosition
-	collision_shape_2d.position = areaPosition + size / 2
+	collision_shape_2d.position = size / 2
 	collision_shape_2d.shape.size = size
 	
-	await get_tree().create_timer(0.04).timeout
+	await get_tree().create_timer(0.02).timeout
 	
 	var objects = get_tree().get_nodes_in_group("object")
 	
 	for body in selection_area.get_overlapping_bodies():
-		if body in get_tree().get_node_in_group("object"):
+		if body.is_in_group("object"):
 			body.selected = true
 			objects.erase(body)
 	
