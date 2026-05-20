@@ -40,3 +40,6 @@ text = "Ctrl + C"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Selectable Area" to="." method="_on_selectable_area_body_entered"]
+[connection signal="body_exited" from="Selectable Area" to="." method="_on_selectable_area_body_exited"]
