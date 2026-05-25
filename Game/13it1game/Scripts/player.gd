@@ -5,7 +5,7 @@ var cur_dir = "none"
 
 
 func _ready() -> void:
-	add_to_group("player")
+	add_to_group("Player")
 
 
 func _physics_process(delta: float) -> void:

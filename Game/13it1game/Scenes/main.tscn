@@ -12,13 +12,7 @@
 [node name="Map" parent="." instance=ExtResource("1_gie8b")]
 
 [node name="bridge" parent="." instance=ExtResource("3_7lgfh")]
-position = Vector2(462, 304)
-
-[node name="Player" parent="." instance=ExtResource("1_4lc31")]
-position = Vector2(111, 267)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+position = Vector2(528, 301)
 
 [node name="RTS-Node" type="Node2D" parent="."]
 script = ExtResource("4_5pbld")
@@ -26,4 +20,11 @@ script = ExtResource("4_5pbld")
 [node name="Selection Area" type="Area2D" parent="RTS-Node"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RTS-Node/Selection Area"]
+position = Vector2(253, 255)
 shape = SubResource("RectangleShape2D_ur8s5")
+
+[node name="Player" parent="." instance=ExtResource("1_4lc31")]
+position = Vector2(111, 267)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
