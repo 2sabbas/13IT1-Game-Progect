@@ -53,7 +53,7 @@ func paste_objects():
 		var newObj = packedScene.instantiate()
 		newObj.position = get_parent().to_local(centerOfPaste + item["offset"])
 		get_parent().move_child(newObj, 1)  #change the order in the scene tree to the index
-		get_parent().add_child(newObj)
+		get_parent().get_node("Bridges").add_child(newObj)
 		
 		clipboard.clear()	
 	print("Pasted ", clipboard.size(), " object(s)")
