@@ -15,12 +15,17 @@ func _input(event: InputEvent) -> void:
 		selectionStartPoint = Vector2.ZERO
 	
 	# Copy
-	if Input.is_action_pressed("copy"):
+	if (Input.is_action_pressed("copy") && Global.numOfCopiesAvalable > 0):
 		copy_selected()
+		
 	# Paste
 	if Input.is_action_pressed("paste"):
 		paste_objects()
 	
+
+func _process(delta: float) -> void:
+	queue_redraw()
+	print("clipboard enpty: " + str(!clipboard.is_empty()))
 
 func copy_selected():
 	clipboard.clear()
@@ -40,6 +45,7 @@ func copy_selected():
 			"scene": obj.scene_file_path,
 			"offset": obj.global_position - center 
 		})
+	Global.numOfCopiesAvalable -= 1
 	print("Copied ", clipboard.size(), " object(s)")
 
 func paste_objects():
@@ -52,14 +58,11 @@ func paste_objects():
 		var packedScene = load(item["scene"]) as PackedScene
 		var newObj = packedScene.instantiate()
 		newObj.position = get_parent().to_local(centerOfPaste + item["offset"])
-		get_parent().move_child(newObj, 1)  #change the order in the scene tree to the index
 		get_parent().get_node("Bridges").add_child(newObj)
 		
-		clipboard.clear()	
+		
 	print("Pasted ", clipboard.size(), " object(s)")
-
-func _process(delta: float) -> void:
-	queue_redraw()
+	clipboard.clear()	
 
 func _draw() -> void:
 	if selectionStartPoint == Vector2.ZERO: return

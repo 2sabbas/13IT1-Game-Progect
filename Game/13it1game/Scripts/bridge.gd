@@ -10,6 +10,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	label.visible = selected
+	if Input.is_action_pressed("copy"):
+		selected = false
 	
 
 func _on_selectable_area_body_entered(body: Node2D) -> void:

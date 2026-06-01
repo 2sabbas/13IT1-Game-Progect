@@ -1,23 +1,64 @@
-[gd_scene load_steps=6 format=3 uid="uid://snsg45akwsrk"]
+[gd_scene load_steps=7 format=3 uid="uid://snsg45akwsrk"]
 
 [ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="1_4lc31"]
 [ext_resource type="PackedScene" uid="uid://clbk2t1yjquv" path="res://Scenes/map.tscn" id="1_gie8b"]
 [ext_resource type="PackedScene" uid="uid://bo611jdvcqqmu" path="res://Scenes/bridge.tscn" id="3_7lgfh"]
 [ext_resource type="Script" path="res://Scripts/rts_node.gd" id="4_5pbld"]
+[ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="5_0s3jo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ur8s5"]
 
 [node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_0s3jo")]
 
 [node name="Map" parent="." instance=ExtResource("1_gie8b")]
 
 [node name="Bridges" type="Node2D" parent="."]
 
 [node name="bridge" parent="Bridges" instance=ExtResource("3_7lgfh")]
-position = Vector2(528, 301)
+position = Vector2(368, 336)
+
+[node name="Tutorial Instructions" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Tutorial Instructions"]
+offset_left = 69.0
+offset_top = 254.0
+offset_right = 210.0
+offset_bottom = 303.0
+text = "Make it to 
+the end  ---->"
+
+[node name="Label2" type="Label" parent="Tutorial Instructions"]
+offset_left = 158.0
+offset_top = 342.0
+offset_right = 299.0
+offset_bottom = 391.0
+text = "Use the mouse to 
+select the bridge"
+
+[node name="Label3" type="Label" parent="Tutorial Instructions"]
+offset_left = 436.0
+offset_top = 336.0
+offset_right = 581.0
+offset_bottom = 437.0
+text = "Use the Ctr + V to
+paste the bridge 
+where your mouse 
+is"
+
+[node name="Label4" type="Label" parent="Tutorial Instructions"]
+offset_left = 925.0
+offset_top = 301.0
+offset_right = 1007.0
+offset_bottom = 358.0
+text = "You Have 
+Passed"
 
 [node name="Player" parent="." instance=ExtResource("1_4lc31")]
-position = Vector2(111, 267)
+position = Vector2(93, 336)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
