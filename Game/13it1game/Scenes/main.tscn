@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://snsg45akwsrk"]
+[gd_scene load_steps=5 format=3 uid="uid://snsg45akwsrk"]
 
 [ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="1_4lc31"]
 [ext_resource type="PackedScene" uid="uid://clbk2t1yjquv" path="res://Scenes/map.tscn" id="1_gie8b"]
-[ext_resource type="PackedScene" uid="uid://bo611jdvcqqmu" path="res://Scenes/bridge.tscn" id="3_7lgfh"]
-[ext_resource type="Script" path="res://Scripts/rts_node.gd" id="4_5pbld"]
+[ext_resource type="Script" uid="uid://d3mdfrl37y1aq" path="res://Scripts/rts_node.gd" id="4_5pbld"]
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="5_0s3jo"]
 
 [node name="Main" type="Node2D"]
@@ -15,9 +14,6 @@
 [node name="Map" parent="." instance=ExtResource("1_gie8b")]
 
 [node name="Bridges" type="Node2D" parent="."]
-
-[node name="bridge" parent="Bridges" instance=ExtResource("3_7lgfh")]
-position = Vector2(368, 176)
 
 [node name="Tutorial Instructions" type="Node2D" parent="."]
 
