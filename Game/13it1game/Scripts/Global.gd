@@ -1,3 +1,3 @@
 extends Node
 
-var numOfCopiesAvalable = 2
+var numOfCopiesAvalable = 20

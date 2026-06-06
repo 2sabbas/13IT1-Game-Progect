@@ -21,12 +21,13 @@ func _input(event: InputEvent) -> void:
 		selection_start_point = Vector2.ZERO
 	
 	# Copy
-	if (Input.is_action_pressed("copy") && Global.numOfCopiesAvalable > 0):
+	if (Input.is_action_just_pressed("copy") && Global.numOfCopiesAvalable > 0):
 		copy_selected()
+		#copy_selected()
 		Global.numOfCopiesAvalable -= 1
 		
 	# Paste
-	if Input.is_action_pressed("paste"):
+	if Input.is_action_just_pressed("paste"):
 		paste_objects()
 	
 
