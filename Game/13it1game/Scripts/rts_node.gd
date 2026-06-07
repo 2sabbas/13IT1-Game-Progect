@@ -29,7 +29,7 @@ func _input(event: InputEvent) -> void:
 		if (Input.is_action_just_released("left_click")):
 			selection_end_point = get_global_mouse_position()
 			is_selecting = false
-			if (selection_start_point.distance_to(selection_end_point) > 4):
+			if (selection_start_point.distance_to(selection_end_point) > 8):
 				has_selected = true
 			else:
 				selection_start_point = Vector2.ZERO
@@ -52,7 +52,8 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	queue_redraw()
-	#print("clipboard enpty: " + str(clipboard.is_empty()))
+	Global.copy_avalable = has_selected && Global.numOfCopiesAvalable > 0
+	Global.paste_avalable = !clipboard.is_empty()
 
 
 func copy_selected():
@@ -120,7 +121,7 @@ func _draw() -> void:
 	var end = to_local(selection_end_point if not is_selecting else get_global_mouse_position())
 	
 	var lineWidth = 0.5
-	var lineColor = Color.WHITE
+	var lineColor = Color.YELLOW if has_selected else Color.WHITE
 	var fillColor = Color(1, 1, 0, 0.15) if has_selected else Color(1, 1, 1, 0.15)
 	
 	draw_rect(Rect2(start, end - start), fillColor)
