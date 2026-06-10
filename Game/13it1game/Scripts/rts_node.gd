@@ -4,6 +4,9 @@ extends Node2D
 var layers_to_copy = ["Hitbox Elements"]
 
 var selection_start_point = Vector2.ZERO
+var selection_end_point = Vector2.ZERO
+var is_selecting = false
+var has_selected = false
 var clipboard: Array = []
 
 
@@ -15,37 +18,54 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if (selection_start_point == Vector2.ZERO && Input.is_action_pressed("left_click")):
+	# start new selection on click - also clears any existing selection
+	if (Input.is_action_just_pressed("left_click")):
 		selection_start_point = get_global_mouse_position()
-	elif (selection_start_point != Vector2.ZERO && Input.is_action_just_released("left_click")):
-		selection_start_point = Vector2.ZERO
+		selection_end_point = selection_start_point
+		is_selecting = true
+		has_selected = false
+	# mouse released - freeze the box in place
+	else:
+		if (Input.is_action_just_released("left_click")):
+			selection_end_point = get_global_mouse_position()
+			is_selecting = false
+			if (selection_start_point.distance_to(selection_end_point) > 8):
+				has_selected = true
+			else:
+				selection_start_point = Vector2.ZERO
+				selection_end_point = Vector2.ZERO
 	
 	# Copy
-	if (Input.is_action_pressed("copy") && Global.numOfCopiesAvalable > 0):
+	if (Input.is_action_just_pressed("copy") && has_selected && Global.numOfCopiesAvalable > 0):
 		copy_selected()
+		selection_start_point = Vector2.ZERO
+		selection_end_point = Vector2.ZERO
+		is_selecting = false
+		has_selected = false
 		Global.numOfCopiesAvalable -= 1
 		
 	# Paste
-	if Input.is_action_pressed("paste"):
+	if Input.is_action_just_pressed("paste"):
 		paste_objects()
 	
 
 
 func _process(delta: float) -> void:
 	queue_redraw()
-	#print("clipboard enpty: " + str(clipboard.is_empty()))
+	Global.copy_avalable = has_selected && Global.numOfCopiesAvalable > 0
+	Global.paste_avalable = !clipboard.is_empty()
 
 
 func copy_selected():
 	clipboard.clear()
 	var mouse_position = get_global_mouse_position()
 	var top_left = Vector2(
-		min(selection_start_point.x, mouse_position.x), 
-		min(selection_start_point.y, mouse_position.y)
+		min(selection_start_point.x, selection_end_point.x), 
+		min(selection_start_point.y, selection_end_point.y)
 	)
 	var bottom_right = Vector2(
-		max(selection_start_point.x, mouse_position.x), 
-		max(selection_start_point.y, mouse_position.y)
+		max(selection_start_point.x, selection_end_point.x), 
+		max(selection_start_point.y, selection_end_point.y)
 	)
 	var start_cell = Vector2i.ZERO
 	var end_cell = Vector2i.ZERO
@@ -97,13 +117,12 @@ func paste_objects():
 func _draw() -> void:
 	if selection_start_point == Vector2.ZERO: return
 	
-	var mouse_position = get_global_mouse_position()
 	var start = to_local(selection_start_point)
-	var end = to_local(mouse_position)
+	var end = to_local(selection_end_point if not is_selecting else get_global_mouse_position())
 	
 	var lineWidth = 0.5
-	var lineColor = Color.WHITE
-	var fillColor = Color(1, 1, 1, 0.15)
+	var lineColor = Color.YELLOW if has_selected else Color.WHITE
+	var fillColor = Color(1, 1, 0, 0.15) if has_selected else Color(1, 1, 1, 0.15)
 	
 	draw_rect(Rect2(start, end - start), fillColor)
 	draw_line(Vector2(start.x, start.y), Vector2(end.x, start.y), lineColor, lineWidth)

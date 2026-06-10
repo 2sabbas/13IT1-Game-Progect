@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bo611jdvcqqmu"]
 
-[ext_resource type="Script" path="res://Scripts/bridge.gd" id="1_b5nws"]
+[ext_resource type="Script" uid="uid://dskwhmigpxd6r" path="res://Scripts/bridge.gd" id="1_b5nws"]
 [ext_resource type="Texture2D" uid="uid://c38ehxv8ex8d" path="res://Assets/Map/8x4 bridge.png" id="1_vsd4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxjla"]
