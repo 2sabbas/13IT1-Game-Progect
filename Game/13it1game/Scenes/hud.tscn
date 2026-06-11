@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nnwsq")
 
-[node name="Copies Avalable" type="Label" parent="."]
+[node name="Copies Available" type="Label" parent="."]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 15.0

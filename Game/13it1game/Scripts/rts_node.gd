@@ -129,18 +129,3 @@ func _draw() -> void:
 	draw_line(Vector2(start.x, start.y), Vector2(start.x, end.y), lineColor, lineWidth)
 	draw_line(Vector2(end.x, start.y), Vector2(end.x, end.y), lineColor, lineWidth)
 	draw_line(Vector2(start.x, end.y), Vector2(end.x, end.y), lineColor, lineWidth)
-
-
-func get_rect_start_position():
-	var newPosition = Vector2.ZERO
-	var mouse_position = get_global_mouse_position()
-	
-	if selection_start_point.x < mouse_position.x:
-		newPosition.x = selection_start_point.x
-	else: newPosition.x = mouse_position.x
-	
-	if selection_start_point.y < mouse_position.y:
-		newPosition.y = selection_start_point.y
-	else: newPosition.y = mouse_position.y
-	
-	return newPosition
