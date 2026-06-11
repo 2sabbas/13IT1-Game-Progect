@@ -57,12 +57,12 @@ func play_movement_animation(motion):
 	if dir == "up":
 		animated_sprite.flip_h = false
 		if motion == 1:
-			animated_sprite.play("walk_back")
+			animated_sprite.play("walk_up")
 		else:
-			animated_sprite.play("idle_back")
+			animated_sprite.play("idle_up")
 	if dir == "down":
 		animated_sprite.flip_h = false
 		if motion == 1:
-			animated_sprite.play("walk_front")
+			animated_sprite.play("walk_down")
 		else:
-			animated_sprite.play("idle_front")
+			animated_sprite.play("idle_down")

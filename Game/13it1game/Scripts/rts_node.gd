@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var tile_layers: Array = []
-var layers_to_copy = ["Hitbox Elements"]
+var layers_to_copy = ["Objects"]
 
 var selection_start_point = Vector2.ZERO
 var selection_end_point = Vector2.ZERO
@@ -36,13 +36,13 @@ func _input(event: InputEvent) -> void:
 				selection_end_point = Vector2.ZERO
 	
 	# Copy
-	if (Input.is_action_just_pressed("copy") && has_selected && Global.numOfCopiesAvalable > 0):
+	if (Input.is_action_just_pressed("copy") && has_selected && Global.num_of_copies_available > 0):
 		copy_selected()
 		selection_start_point = Vector2.ZERO
 		selection_end_point = Vector2.ZERO
 		is_selecting = false
 		has_selected = false
-		Global.numOfCopiesAvalable -= 1
+		Global.num_of_copies_available -= 1
 		
 	# Paste
 	if Input.is_action_just_pressed("paste"):
@@ -52,8 +52,6 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	queue_redraw()
-	Global.copy_avalable = has_selected && Global.numOfCopiesAvalable > 0
-	Global.paste_avalable = !clipboard.is_empty()
 
 
 func copy_selected():
