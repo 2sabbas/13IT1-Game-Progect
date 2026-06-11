@@ -52,10 +52,10 @@ text = "You Have
 Passed"
 
 [node name="Player" parent="." instance=ExtResource("1_4lc31")]
-position = Vector2(63, 176)
+position = Vector2(53, 137)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 
 [node name="RTS-Node" type="Node2D" parent="."]
 script = ExtResource("4_5pbld")
