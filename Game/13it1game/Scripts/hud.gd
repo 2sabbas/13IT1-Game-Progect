@@ -1,10 +1,10 @@
 extends Control
 
-@onready var copies_avalable: Label = $"Copies Avalable"
+@onready var copies_available: Label = $"Copies Available"
 
 func _ready() -> void:
-	copies_avalable.text = "Copies Avalable: " + str(Global.numOfCopiesAvalable)
+	copies_available.text = "Copies Available: " + str(Global.num_of_copies_available)
 
 
 func _process(delta: float) -> void:
-	copies_avalable.text = "Copies Avalable: " + str(Global.numOfCopiesAvalable)
+	copies_available.text = "Copies Available: " + str(Global.num_of_copies_available)

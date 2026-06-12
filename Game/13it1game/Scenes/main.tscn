@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="5_0s3jo"]
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -52,7 +53,7 @@ text = "You Have
 Passed"
 
 [node name="Player" parent="." instance=ExtResource("1_4lc31")]
-position = Vector2(54, 154)
+position = Vector2(53, 137)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)

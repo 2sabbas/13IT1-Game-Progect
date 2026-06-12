@@ -298,10 +298,10 @@ collision_mask = 3
 script = ExtResource("1_82sqb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_vgqql")
 animation = &"idle_down"
-offset = Vector2(0, -16)
+autoplay = "idle_down"
+offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)

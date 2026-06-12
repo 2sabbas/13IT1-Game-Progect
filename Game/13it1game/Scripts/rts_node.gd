@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var tile_layers: Array = []
-var layers_to_copy = ["Hitbox Elements"]
+var layers_to_copy = ["Objects"]
 
 var selection_start_point = Vector2.ZERO
 var selection_end_point = Vector2.ZERO
@@ -36,13 +36,13 @@ func _input(event: InputEvent) -> void:
 				selection_end_point = Vector2.ZERO
 	
 	# Copy
-	if (Input.is_action_just_pressed("copy") && has_selected && Global.numOfCopiesAvalable > 0):
+	if (Input.is_action_just_pressed("copy") && has_selected && Global.num_of_copies_available > 0):
 		copy_selected()
 		selection_start_point = Vector2.ZERO
 		selection_end_point = Vector2.ZERO
 		is_selecting = false
 		has_selected = false
-		Global.numOfCopiesAvalable -= 1
+		Global.num_of_copies_available -= 1
 		
 	# Paste
 	if Input.is_action_just_pressed("paste"):
@@ -52,8 +52,6 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	queue_redraw()
-	Global.copy_avalable = has_selected && Global.numOfCopiesAvalable > 0
-	Global.paste_avalable = !clipboard.is_empty()
 
 
 func copy_selected():
@@ -129,18 +127,3 @@ func _draw() -> void:
 	draw_line(Vector2(start.x, start.y), Vector2(start.x, end.y), lineColor, lineWidth)
 	draw_line(Vector2(end.x, start.y), Vector2(end.x, end.y), lineColor, lineWidth)
 	draw_line(Vector2(start.x, end.y), Vector2(end.x, end.y), lineColor, lineWidth)
-
-
-func get_rect_start_position():
-	var newPosition = Vector2.ZERO
-	var mouse_position = get_global_mouse_position()
-	
-	if selection_start_point.x < mouse_position.x:
-		newPosition.x = selection_start_point.x
-	else: newPosition.x = mouse_position.x
-	
-	if selection_start_point.y < mouse_position.y:
-		newPosition.y = selection_start_point.y
-	else: newPosition.y = mouse_position.y
-	
-	return newPosition
