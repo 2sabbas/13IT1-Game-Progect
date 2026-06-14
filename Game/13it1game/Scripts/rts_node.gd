@@ -8,6 +8,7 @@ var selection_end_point = Vector2.ZERO
 var is_selecting = false
 var has_selected = false
 var clipboard: Array = []
+var undo_history: Array = []
 
 
 func _ready() -> void:
@@ -36,7 +37,7 @@ func _input(event: InputEvent) -> void:
 				selection_end_point = Vector2.ZERO
 	
 	# Copy
-	if (Input.is_action_just_pressed("copy") && has_selected && Global.num_of_copies_available > 0):
+	if Input.is_action_just_pressed("copy") && has_selected && Global.num_of_copies_available > 0:
 		copy_selected()
 		selection_start_point = Vector2.ZERO
 		selection_end_point = Vector2.ZERO
@@ -47,6 +48,9 @@ func _input(event: InputEvent) -> void:
 	# Paste
 	if Input.is_action_just_pressed("paste"):
 		paste_objects()
+	
+	if Input.is_action_just_pressed("undo") && Global.num_of_undos_available > 0:
+		undo()
 	
 
 
@@ -100,16 +104,52 @@ func paste_objects():
 	if clipboard.is_empty(): return
 	
 	var mouse_position = get_global_mouse_position()
+	var snapshot: Array = []
 	
 	for item in clipboard:
 		var layer = item["layer"]
 		var paste_origin = layer.local_to_map(layer.to_local(mouse_position))
 		var target_cell = paste_origin + item["offset"]
 		
+		snapshot.append({
+			"layer": layer, 
+			"cell": target_cell, 
+			"source_id": layer.get_cell_source_id(target_cell), 
+			"atlas_coords": layer.get_cell_atlas_coords(target_cell),
+			"alternative": layer.get_cell_alternative_tile(target_cell)
+		})
+		
 		layer.set_cell(target_cell, item["source_id"], item["atlas_coords"], item["alternative"])
+	
+	undo_history.append({
+		"snapshot": snapshot, 
+		"clipboard": clipboard.duplicate(true), #makes a copy of clipboard so when the clipboard is cleared, the undo history still has a copy of the action that happened
+	})
 	
 	print("Pasted ", clipboard.size(), " tiles")
 	clipboard.clear()	
+
+
+func undo():
+	if undo_history.is_empty(): 
+		print("Nothing to undo")
+		return
+	if Global.num_of_undos_available == 0: return
+	
+	var last_action = undo_history.pop_back()
+	
+	for tile in last_action["snapshot"]:
+		var layer = tile["layer"]
+		if tile["source_id"] == -1:
+			layer.erase_cell(tile["cell"])
+		else:
+			layer.set_cell(tile["cell"], tile["source_id"], tile["atlas_coords"], tile["alternative"])
+	
+	clipboard = last_action["clipboard"]
+	Global.num_of_copies_available += 1
+	Global.num_of_undos_available -= 1
+	
+	print("Undo complete, copies restored: ", Global.num_of_copies_available)
 
 
 func _draw() -> void:

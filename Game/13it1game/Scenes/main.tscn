@@ -1,12 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://snsg45akwsrk"]
+[gd_scene load_steps=6 format=3 uid="uid://snsg45akwsrk"]
 
 [ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="1_4lc31"]
 [ext_resource type="PackedScene" uid="uid://clbk2t1yjquv" path="res://Scenes/map.tscn" id="1_gie8b"]
 [ext_resource type="Script" uid="uid://d3mdfrl37y1aq" path="res://Scripts/rts_node.gd" id="4_5pbld"]
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="5_0s3jo"]
 
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_exposure = 0.8
+tonemap_white = 0.6
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.5
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjvhh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
