@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://snsg45akwsrk"]
 
 [ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="1_4lc31"]
-[ext_resource type="PackedScene" uid="uid://clbk2t1yjquv" path="res://Scenes/map.tscn" id="1_gie8b"]
+[ext_resource type="PackedScene" uid="uid://cfxggbf3mm1fj" path="res://Scenes/map.tscn" id="2_jjvhh"]
 [ext_resource type="Script" uid="uid://d3mdfrl37y1aq" path="res://Scripts/rts_node.gd" id="4_5pbld"]
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="5_0s3jo"]
 
@@ -12,7 +12,8 @@ tonemap_exposure = 0.8
 tonemap_white = 0.6
 glow_enabled = true
 glow_normalized = true
-glow_bloom = 0.5
+glow_bloom = 0.4
+glow_blend_mode = 1
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -20,13 +21,14 @@ y_sort_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jjvhh")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.649174, 0.697378, 0.715018, 1)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_0s3jo")]
 
-[node name="Map" parent="." instance=ExtResource("1_gie8b")]
-
-[node name="Bridges" type="Node2D" parent="."]
+[node name="Map" parent="." instance=ExtResource("2_jjvhh")]
 
 [node name="Tutorial Instructions" type="Node2D" parent="."]
 
