@@ -9,6 +9,7 @@ var is_selecting = false
 var has_selected = false
 var clipboard: Array = []
 var undo_history: Array = []
+var copy_method = ""
 
 
 func _ready() -> void:
@@ -43,12 +44,20 @@ func _input(event: InputEvent) -> void:
 		selection_end_point = Vector2.ZERO
 		is_selecting = false
 		has_selected = false
+		copy_method = "copy"
 		Global.num_of_copies_available -= 1
-		
+	
 	# Paste
 	if Input.is_action_just_pressed("paste"):
 		paste_objects()
 	
+	#Cut
+	if Input.is_action_just_pressed("cut") && Global.num_of_cuts_available > 0:
+		cut()
+		Global.num_of_cuts_available -= 1
+		copy_method = "cut"
+	
+	#Undo
 	if Input.is_action_just_pressed("undo") && Global.num_of_undos_available > 0:
 		undo()
 	
@@ -87,6 +96,7 @@ func copy_selected():
 				
 				layer_clipboard.append({
 					"layer": layer, 
+					"cell": cell, 
 					"offset": cell - start_cell, 
 					"source_id": source_id, 
 					"atlas_coords": layer.get_cell_atlas_coords(cell),
@@ -96,8 +106,6 @@ func copy_selected():
 		for item in layer_clipboard:
 			item["offset"] = item["offset"] - (center_cell - start_cell)
 		clipboard.append_array(layer_clipboard)
-		
-	print("Copied ", clipboard.size(), " tiles")
 
 
 func paste_objects():
@@ -124,10 +132,32 @@ func paste_objects():
 	undo_history.append({
 		"snapshot": snapshot, 
 		"clipboard": clipboard.duplicate(true), #makes a copy of clipboard so when the clipboard is cleared, the undo history still has a copy of the action that happened
+		"action": "copy" if copy_method == "copy" else ""
 	})
-	
-	print("Pasted ", clipboard.size(), " tiles")
 	clipboard.clear()	
+
+
+func cut():
+	copy_selected()	
+	
+	var snapshot: Array = []
+	for item in clipboard:
+		var layer = item["layer"]
+		var cell = item["cell"]
+		snapshot.append({
+			"layer": layer, 
+			"cell": cell, 
+			"source_id": layer.get_cell_source_id(cell), 
+			"atlas_coords": layer.get_cell_atlas_coords(cell), 
+			"alternative": layer.get_cell_alternative_tile(cell)
+		})
+		item["layer"].erase_cell(cell)
+	
+	undo_history.append({
+		"snapshot": snapshot, 
+		"clipboard": clipboard.duplicate(true), 
+		"action": "cut"
+	})
 
 
 func undo():
@@ -146,10 +176,9 @@ func undo():
 			layer.set_cell(tile["cell"], tile["source_id"], tile["atlas_coords"], tile["alternative"])
 	
 	clipboard = last_action["clipboard"]
-	Global.num_of_copies_available += 1
+	if last_action["action"] == "copy": Global.num_of_copies_available += 1
+	if last_action["action"] == "cut": Global.num_of_cuts_available += 1
 	Global.num_of_undos_available -= 1
-	
-	print("Undo complete, copies restored: ", Global.num_of_copies_available)
 
 
 func _draw() -> void:
