@@ -14,6 +14,8 @@ glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.4
 glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_contrast = 1.05
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -22,7 +24,7 @@ y_sort_enabled = true
 environment = SubResource("Environment_jjvhh")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.649174, 0.697378, 0.715018, 1)
+color = Color(0.481749, 0.609509, 0.617467, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -67,7 +69,7 @@ text = "You Have
 Passed"
 
 [node name="Player" parent="." instance=ExtResource("1_4lc31")]
-position = Vector2(53, 137)
+position = Vector2(80, 170)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)

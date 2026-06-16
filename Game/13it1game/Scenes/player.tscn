@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cipwdyy0qh63o"]
+[gd_scene load_steps=42 format=3 uid="uid://cipwdyy0qh63o"]
 
 [ext_resource type="Script" uid="uid://d0ax32mqfe3o5" path="res://Scripts/player.gd" id="1_82sqb"]
 [ext_resource type="Texture2D" uid="uid://dmfcu1kcgwrdt" path="res://Assets/Character/player.png" id="2_cvnsp"]
@@ -292,6 +292,9 @@ animations = [{
 radius = 3.0
 height = 12.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cvnsp"]
+polygon = PackedVector2Array(-4, 1, 5, 1, 6, -1, 6, -3, 5, -4, -4, -4, -5, -3, -5, -1)
+
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_mask = 3
@@ -301,9 +304,12 @@ script = ExtResource("1_82sqb")
 sprite_frames = SubResource("SpriteFrames_vgqql")
 animation = &"idle_down"
 autoplay = "idle_down"
-offset = Vector2(0, -15)
+offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_cvnsp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_cvnsp")
