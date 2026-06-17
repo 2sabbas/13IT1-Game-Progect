@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var tile_layers: Array = []
-var layers_to_copy = ["Objects"]
+var layers_to_copy = ["Objects", "Ysort Objects"]
 
 var selection_start_point = Vector2.ZERO
 var selection_end_point = Vector2.ZERO
