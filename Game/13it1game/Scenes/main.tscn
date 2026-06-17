@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://snsg45akwsrk"]
+[gd_scene load_steps=8 format=3 uid="uid://snsg45akwsrk"]
 
 [ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="1_4lc31"]
-[ext_resource type="PackedScene" uid="uid://cfxggbf3mm1fj" path="res://Scenes/map.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_jjvhh"]
 [ext_resource type="Script" uid="uid://d3mdfrl37y1aq" path="res://Scripts/rts_node.gd" id="4_5pbld"]
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="5_0s3jo"]
+[ext_resource type="PackedScene" uid="uid://db4x25ak0mpwr" path="res://Scenes/collectable.tscn" id="5_qk3e3"]
+[ext_resource type="PackedScene" uid="uid://3ovfae3infse" path="res://Scenes/box.tscn" id="6_21xkr"]
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 3
@@ -24,7 +26,7 @@ y_sort_enabled = true
 environment = SubResource("Environment_jjvhh")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.481749, 0.609509, 0.617467, 1)
+color = Color(0.414892, 0.577673, 0.677901, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -33,6 +35,7 @@ color = Color(0.481749, 0.609509, 0.617467, 1)
 [node name="Map" parent="." instance=ExtResource("2_jjvhh")]
 
 [node name="Tutorial Instructions" type="Node2D" parent="."]
+position = Vector2(32, 65)
 
 [node name="Label" type="Label" parent="Tutorial Instructions"]
 offset_left = 69.0
@@ -69,10 +72,33 @@ text = "You Have
 Passed"
 
 [node name="Player" parent="." instance=ExtResource("1_4lc31")]
-position = Vector2(80, 170)
+position = Vector2(111, 234)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 
 [node name="RTS-Node" type="Node2D" parent="."]
 script = ExtResource("4_5pbld")
+
+[node name="Collectables" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(32, 65)
+
+[node name="Copy" parent="Collectables" instance=ExtResource("5_qk3e3")]
+position = Vector2(480, 34)
+type = 1
+
+[node name="Copy2" parent="Collectables" instance=ExtResource("5_qk3e3")]
+position = Vector2(1056, 128)
+type = 1
+
+[node name="Undo" parent="Collectables" instance=ExtResource("5_qk3e3")]
+position = Vector2(896, 432)
+type = 3
+
+[node name="Cut" parent="Collectables" instance=ExtResource("5_qk3e3")]
+position = Vector2(928, 736)
+type = 2
+
+[node name="Box" parent="." instance=ExtResource("6_21xkr")]
+position = Vector2(291, 194)

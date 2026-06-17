@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4c6ldu73lo33"]
+[gd_scene load_steps=9 format=3 uid="uid://db4x25ak0mpwr"]
 
 [ext_resource type="Script" uid="uid://dwvg5jssl4577" path="res://Scripts/collectable.gd" id="1_govy6"]
 [ext_resource type="Texture2D" uid="uid://bqpkn8xow27kb" path="res://Assets/Sprites/Grey Pickup.png" id="1_me652"]
@@ -72,6 +72,7 @@ _data = {
 }
 
 [node name="Collectable" type="Area2D"]
+y_sort_enabled = true
 script = ExtResource("1_govy6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -96,4 +97,6 @@ energy = 2.5
 shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("3_v8770")
-texture_scale = 0.2
+texture_scale = 0.3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

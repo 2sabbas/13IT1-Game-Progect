@@ -12,7 +12,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	player_moment(delta)
-
+	
+	move_and_slide()
 
 func player_moment(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -35,8 +36,6 @@ func player_moment(delta):
 	else:
 		velocity = Vector2.ZERO
 		play_movement_animation(0)
-
-	move_and_slide()
 
 
 func play_movement_animation(motion):
