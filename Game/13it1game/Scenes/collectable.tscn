@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://4c6ldu73lo33"]
+[gd_scene load_steps=9 format=3 uid="uid://db4x25ak0mpwr"]
 
-[ext_resource type="Script" uid="uid://dwvg5jssl4577" path="res://Scripts/collectable.gd" id="1_govy6"]
+[ext_resource type="Script" path="res://Scripts/collectable.gd" id="1_govy6"]
 [ext_resource type="Texture2D" uid="uid://bqpkn8xow27kb" path="res://Assets/Sprites/Grey Pickup.png" id="1_me652"]
 [ext_resource type="Texture2D" uid="uid://cjahiva7euuq6" path="res://Assets/Sprites/16x16 shadow.png" id="2_govy6"]
 [ext_resource type="Texture2D" uid="uid://kyko10brusic" path="res://Assets/Lighting/White Light.png" id="3_v8770"]
@@ -67,8 +67,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gjy8n"]
 _data = {
-&"Float_animation": SubResource("Animation_lwnu8"),
-&"RESET": SubResource("Animation_np15q")
+"Float_animation": SubResource("Animation_lwnu8"),
+"RESET": SubResource("Animation_np15q")
 }
 
 [node name="Collectable" type="Area2D"]
@@ -87,7 +87,7 @@ texture = ExtResource("2_govy6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_gjy8n")
+"": SubResource("AnimationLibrary_gjy8n")
 }
 autoplay = "Float_animation"
 
@@ -96,4 +96,6 @@ energy = 2.5
 shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("3_v8770")
-texture_scale = 0.2
+texture_scale = 0.3
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
