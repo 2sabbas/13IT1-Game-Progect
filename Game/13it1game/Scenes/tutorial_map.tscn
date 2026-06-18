@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn3nq68wc5eek"]
+
+[ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="1_tqwtp"]
+[ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_qjdhv"]
+[ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="3_fsic1"]
+[ext_resource type="Script" uid="uid://d3mdfrl37y1aq" path="res://Scripts/rts_node.gd" id="4_f5bqe"]
+[ext_resource type="PackedScene" uid="uid://db4x25ak0mpwr" path="res://Scenes/collectable.tscn" id="5_scca2"]
+[ext_resource type="PackedScene" uid="uid://3ovfae3infse" path="res://Scenes/box.tscn" id="6_rhj13"]
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_exposure = 0.8
+tonemap_white = 0.6
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.4
+glow_blend_mode = 1
+adjustment_enabled = true
+adjustment_contrast = 1.05
+
+[node name="Tutorial Map" type="Node2D"]
+y_sort_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jjvhh")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.414892, 0.577673, 0.677901, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_tqwtp")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Map" parent="." instance=ExtResource("2_qjdhv")]
+
+[node name="Tutorial Instructions" type="Node2D" parent="."]
+position = Vector2(32, 65)
+
+[node name="Label" type="Label" parent="Tutorial Instructions"]
+offset_left = 42.0
+offset_top = 101.0
+offset_right = 183.0
+offset_bottom = 150.0
+text = "Make it to 
+the end  ---->"
+
+[node name="Label2" type="Label" parent="Tutorial Instructions"]
+offset_left = 158.0
+offset_top = 181.0
+offset_right = 299.0
+offset_bottom = 230.0
+text = "Use the mouse to 
+select the bridge"
+
+[node name="Label3" type="Label" parent="Tutorial Instructions"]
+offset_left = 436.0
+offset_top = 175.0
+offset_right = 585.0
+offset_bottom = 276.0
+text = "Use the Ctr + V to
+paste the bridge 
+where your mouse 
+is"
+
+[node name="Label4" type="Label" parent="Tutorial Instructions"]
+offset_left = 925.0
+offset_top = 140.0
+offset_right = 1007.0
+offset_bottom = 197.0
+text = "You Have 
+Passed"
+
+[node name="Player" parent="." instance=ExtResource("3_fsic1")]
+position = Vector2(111, 234)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1216
+limit_bottom = 911
+
+[node name="RTS-Node" type="Node2D" parent="."]
+script = ExtResource("4_f5bqe")
+
+[node name="Collectables" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(32, 65)
+
+[node name="Copy" parent="Collectables" instance=ExtResource("5_scca2")]
+position = Vector2(480, 34)
+type = 1
+
+[node name="Copy2" parent="Collectables" instance=ExtResource("5_scca2")]
+position = Vector2(1056, 128)
+type = 1
+
+[node name="Undo" parent="Collectables" instance=ExtResource("5_scca2")]
+position = Vector2(896, 432)
+type = 3
+
+[node name="Cut" parent="Collectables" instance=ExtResource("5_scca2")]
+position = Vector2(928, 736)
+type = 2
+
+[node name="Box" parent="." instance=ExtResource("6_rhj13")]
+position = Vector2(296, 193)

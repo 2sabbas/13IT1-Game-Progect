@@ -1,0 +1,22 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bqlu65r12fskd"]
+
+[ext_resource type="FontFile" uid="uid://dgk0si78xquoy" path="res://Theme/Pixellari.ttf" id="1_sklk3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tl60c"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 1, 0.992157, 0.239216)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(0.027451, 0.658824, 0.658824, 1)
+border_blend = true
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("1_sklk3")
+Label/styles/normal = SubResource("StyleBoxFlat_tl60c")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://d41s4qjwhoy2"]
+
+[ext_resource type="Theme" uid="uid://c7ah7fetrkpfj" path="res://Theme/Base theme.tres" id="1_28flt"]
+[ext_resource type="Script" uid="uid://c2r4chlms50kv" path="res://Scripts/main_menu.gd" id="2_48xlc"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_28flt")
+script = ExtResource("2_48xlc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -174.0
+offset_right = 228.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Play Tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play Tutorial (Recomended)"
+
+[node name="Play World" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play World"
+
+[node name="Controls" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="button_up" from="VBoxContainer/Play Tutorial" to="." method="_on_play_tutorial_button_up"]
+[connection signal="button_up" from="VBoxContainer/Play World" to="." method="_on_play_world_button_up"]
+[connection signal="button_up" from="VBoxContainer/Controls" to="." method="_on_controls_button_up"]
+[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]

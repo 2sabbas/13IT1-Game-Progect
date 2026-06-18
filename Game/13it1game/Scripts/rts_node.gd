@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var tile_layers: Array = []
-var layers_to_copy = ["Objects"]
+var layers_to_copy = ["Objects", "Ysort Objects"]
 
 var selection_start_point = Vector2.ZERO
 var selection_end_point = Vector2.ZERO
@@ -46,21 +46,28 @@ func _input(event: InputEvent) -> void:
 		has_selected = false
 		copy_method = "copy"
 		Global.num_of_copies_available -= 1
+		Global.paste_available = !clipboard.is_empty()
 	
 	# Paste
 	if Input.is_action_just_pressed("paste"):
 		paste_objects()
+		Global.paste_available = !clipboard.is_empty()
 	
 	#Cut
 	if Input.is_action_just_pressed("cut") && Global.num_of_cuts_available > 0:
 		cut()
-		Global.num_of_cuts_available -= 1
 		copy_method = "cut"
+		Global.num_of_cuts_available -= 1
+		Global.paste_available = !clipboard.is_empty()
 	
 	#Undo
 	if Input.is_action_just_pressed("undo") && Global.num_of_undos_available > 0:
 		undo()
+		Global.paste_available = !clipboard.is_empty()
 	
+	#Reset Scene
+	if Input.is_action_just_pressed("reset"):
+		get_tree().reload_current_scene()
 
 
 func _process(delta: float) -> void:
@@ -132,7 +139,7 @@ func paste_objects():
 	undo_history.append({
 		"snapshot": snapshot, 
 		"clipboard": clipboard.duplicate(true), #makes a copy of clipboard so when the clipboard is cleared, the undo history still has a copy of the action that happened
-		"action": "copy" if copy_method == "copy" else ""
+		"action": "copy" if copy_method == "copy" else "paste"
 	})
 	clipboard.clear()	
 
@@ -175,9 +182,15 @@ func undo():
 		else:
 			layer.set_cell(tile["cell"], tile["source_id"], tile["atlas_coords"], tile["alternative"])
 	
-	clipboard = last_action["clipboard"]
-	if last_action["action"] == "copy": Global.num_of_copies_available += 1
-	if last_action["action"] == "cut": Global.num_of_cuts_available += 1
+	
+	if last_action["action"] == "copy":
+		clipboard.clear()
+		Global.num_of_copies_available += 1
+	if last_action["action"] == "cut":
+		clipboard.clear()
+		Global.num_of_cuts_available += 1
+	if last_action["action"] == "paste":
+		clipboard = last_action["clipboard"]
 	Global.num_of_undos_available -= 1
 
 

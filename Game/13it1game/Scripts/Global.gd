@@ -1,5 +1,9 @@
-extends Node
+extends Node2D
 
-var num_of_copies_available = 10
-var num_of_undos_available = 10
-var num_of_cuts_available = 10
+enum Game_State {Main_Menu, Controls, Playing_Tutorial, Playing_World, Win}
+var current_game_state: Game_State
+
+var num_of_copies_available = 5
+var num_of_undos_available = 5
+var num_of_cuts_available = 5
+var paste_available =false

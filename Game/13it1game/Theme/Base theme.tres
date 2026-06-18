@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c7ah7fetrkpfj"]
+
+[ext_resource type="FontFile" uid="uid://dgk0si78xquoy" path="res://Theme/Pixellari.ttf" id="1_sxnla"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3fif"]
+bg_color = Color(0.325434, 0.79694, 0.930523, 1)
+border_width_bottom = 5
+border_color = Color(0.184314, 0.662745, 0.823529, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.00784314, 0.117647, 0.309804, 0.360784)
+shadow_size = 1
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxnla"]
+bg_color = Color(0.18404, 0.661996, 0.788005, 1)
+border_width_bottom = 5
+border_color = Color(0.136226, 0.516307, 0.694409, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.00784314, 0.117647, 0.309804, 0.360784)
+shadow_size = 1
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_33rvd"]
+content_margin_top = 4.0
+bg_color = Color(0.325434, 0.79694, 0.930523, 1)
+border_width_top = 5
+border_color = Color(0.184314, 0.662745, 0.823529, 0)
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.00784314, 0.117647, 0.309804, 0.360784)
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[resource]
+default_font = ExtResource("1_sxnla")
+Button/font_sizes/font_size = 32
+Button/styles/hover = SubResource("StyleBoxFlat_x3fif")
+Button/styles/normal = SubResource("StyleBoxFlat_sxnla")
+Button/styles/pressed = SubResource("StyleBoxFlat_33rvd")
