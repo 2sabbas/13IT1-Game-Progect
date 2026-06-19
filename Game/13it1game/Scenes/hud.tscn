@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4cp7qqhtceeu"]
+[gd_scene load_steps=4 format=3 uid="uid://d4cp7qqhtceeu"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_nnwsq"]
+[ext_resource type="Texture2D" uid="uid://ch8t1qxc831na" path="res://Assets/UI/Comand Keys Sprite Sheet.png" id="2_fccik"]
+[ext_resource type="Texture2D" uid="uid://d26v4y37kwmtb" path="res://Assets/UI/Shortcut Icons.png" id="3_bjfho"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -37,3 +39,75 @@ offset_right = 214.0
 offset_bottom = 129.0
 theme_override_font_sizes/font_size = 25
 text = "Cuts Avalable:"
+
+[node name="Paste  Available" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 129.0
+offset_right = 213.0
+offset_bottom = 164.0
+theme_override_font_sizes/font_size = 25
+text = "Paste Avalable:"
+
+[node name="Ctrl C" type="Sprite2D" parent="."]
+position = Vector2(98, 600)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 5
+
+[node name="Ctrl X" type="Sprite2D" parent="."]
+position = Vector2(287, 601)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 5
+frame = 1
+
+[node name="Ctrl Z" type="Sprite2D" parent="."]
+position = Vector2(501, 599)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 5
+frame = 2
+
+[node name="Ctrl V" type="Sprite2D" parent="."]
+position = Vector2(737, 606)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 5
+frame = 3
+
+[node name="Ctrl R" type="Sprite2D" parent="."]
+position = Vector2(998, 62)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 5
+frame = 4
+
+[node name="Copy Icon" type="Sprite2D" parent="."]
+position = Vector2(186, 600)
+texture = ExtResource("3_bjfho")
+vframes = 5
+
+[node name="Cut Icon" type="Sprite2D" parent="."]
+position = Vector2(378, 598)
+texture = ExtResource("3_bjfho")
+vframes = 5
+frame = 1
+
+[node name="Undo Icon" type="Sprite2D" parent="."]
+position = Vector2(586, 592)
+texture = ExtResource("3_bjfho")
+vframes = 5
+frame = 2
+
+[node name="Paste Icon" type="Sprite2D" parent="."]
+position = Vector2(828, 606)
+texture = ExtResource("3_bjfho")
+vframes = 5
+frame = 3
+
+[node name="Reload Icon" type="Sprite2D" parent="."]
+position = Vector2(1090, 60)
+texture = ExtResource("3_bjfho")
+vframes = 5
+frame = 4

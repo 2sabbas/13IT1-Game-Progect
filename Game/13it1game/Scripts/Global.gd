@@ -1,10 +1,9 @@
 extends Node2D
 
-var num_of_copies_available = 0
-var num_of_undos_available = 0
-var num_of_cuts_available = 0
+enum Game_State {Main_Menu, Controls, Playing_Tutorial, Playing_World, Win}
+var current_game_state: Game_State
 
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("reset"):
-		get_tree().reload_current_scene()
+var num_of_copies_available = 5
+var num_of_undos_available = 5
+var num_of_cuts_available = 5
+var paste_available =false
