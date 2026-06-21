@@ -1,11 +1,25 @@
-extends RigidBody2D
+class_name MovableObject
+extends CharacterBody2D
+
+@export_range(0.0, 1.0) var drag := 0.5
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _physics_process(_delta: float) -> void:
+	if velocity.length_squared() > 1.0:
+		velocity *= 1.0 - drag
+		if move_and_slide():
+			resolve_collisions()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func resolve_collisions() -> void:
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var body := collision.get_collider() as MovableObject
+		if body:
+			body.apply_impact(velocity)
+		else:
+			velocity -= velocity.project(collision.get_normal())
+
+
+func apply_impact(impact_velocity: Vector2) -> void:
+	velocity = impact_velocity

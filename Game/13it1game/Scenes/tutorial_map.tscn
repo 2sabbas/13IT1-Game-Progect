@@ -105,5 +105,9 @@ type = 3
 position = Vector2(928, 736)
 type = 2
 
+[node name="Cut2" parent="Collectables" instance=ExtResource("5_scca2")]
+position = Vector2(704, 559)
+type = 2
+
 [node name="Box" parent="." instance=ExtResource("6_rhj13")]
 position = Vector2(296, 193)

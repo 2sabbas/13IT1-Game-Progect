@@ -4,12 +4,14 @@ extends Control
 @onready var undos_available: Label = $"Undos Available"
 @onready var cuts_available: Label = $"Cuts Available"
 @onready var paste__available: Label = $"Paste  Available"
+@onready var selected: Label = $Selected
 
 func _ready() -> void:
 	copies_available.text = "Copies Available: " + str(Global.num_of_copies_available)
 	undos_available.text = "Undos Available: " + str(Global.num_of_undos_available)
 	cuts_available.text = "Cuts available: " + str(Global.num_of_cuts_available)
 	paste__available.text = "Paste available: " + str(Global.paste_available)
+	selected.text = "Selected: " + str(Global.selected)
 
 
 func _process(delta: float) -> void:
@@ -17,3 +19,4 @@ func _process(delta: float) -> void:
 	undos_available.text = "Undos Available: " + str(Global.num_of_undos_available)
 	cuts_available.text = "Cuts available: " + str(Global.num_of_cuts_available)
 	paste__available.text = "Paste available: " + str(Global.paste_available)
+	selected.text = "Selected: " + str(Global.selected)

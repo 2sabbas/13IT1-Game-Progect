@@ -6,10 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ego7h"]
 size = Vector2(16, 14)
 
-[node name="Box" type="RigidBody2D"]
+[node name="Box" type="CharacterBody2D"]
 y_sort_enabled = true
-gravity_scale = 0.0
-contact_monitor = true
+motion_mode = 1
 script = ExtResource("1_uhnhb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

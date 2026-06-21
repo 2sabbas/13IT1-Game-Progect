@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blsfsso1a0a5g"
-path="res://.godot/imported/Yellow Pickup.png-9dece14470aba19a83219d39419551f9.ctex"
+uid="uid://cqyac73sq7oi4"
+path="res://.godot/imported/Finish Portal.png-2220a4a10eedca8a2daa5576d0df5ff1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Yellow Pickup.png"
-dest_files=["res://.godot/imported/Yellow Pickup.png-9dece14470aba19a83219d39419551f9.ctex"]
+source_file="res://Assets/Sprites/Finish Portal.png"
+dest_files=["res://.godot/imported/Finish Portal.png-2220a4a10eedca8a2daa5576d0df5ff1.ctex"]
 
 [params]
 
