@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var speed = 125
+@export var speed = 100
 var cur_dir = "none"
 
 
@@ -13,7 +13,17 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	player_moment(delta)
 	
-	move_and_slide()
+	if move_and_slide():
+		resolve_collision()
+
+
+func resolve_collision():
+	for i in get_slide_collision_count():
+		var collision := get_slide_collision(i)
+		var body := collision.get_collider() as MovableObject
+		if body:
+			body.apply_impact(velocity)
+
 
 func player_moment(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")

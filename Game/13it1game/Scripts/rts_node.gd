@@ -33,9 +33,11 @@ func _input(event: InputEvent) -> void:
 			is_selecting = false
 			if (selection_start_point.distance_to(selection_end_point) > 8):
 				has_selected = true
+				Global.selected = true
 			else:
 				selection_start_point = Vector2.ZERO
 				selection_end_point = Vector2.ZERO
+				Global.selected = false
 	
 	# Copy
 	if Input.is_action_just_pressed("copy") && has_selected && Global.num_of_copies_available > 0:
@@ -44,6 +46,7 @@ func _input(event: InputEvent) -> void:
 		selection_end_point = Vector2.ZERO
 		is_selecting = false
 		has_selected = false
+		Global.selected = false
 		copy_method = "copy"
 		Global.num_of_copies_available -= 1
 		Global.paste_available = !clipboard.is_empty()
@@ -54,8 +57,13 @@ func _input(event: InputEvent) -> void:
 		Global.paste_available = !clipboard.is_empty()
 	
 	#Cut
-	if Input.is_action_just_pressed("cut") && Global.num_of_cuts_available > 0:
+	if Input.is_action_just_pressed("cut") && has_selected && Global.num_of_cuts_available > 0:
 		cut()
+		selection_start_point = Vector2.ZERO
+		selection_end_point = Vector2.ZERO
+		is_selecting = false
+		has_selected = false
+		Global.selected = false
 		copy_method = "cut"
 		Global.num_of_cuts_available -= 1
 		Global.paste_available = !clipboard.is_empty()

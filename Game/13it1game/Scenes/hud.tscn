@@ -49,6 +49,15 @@ offset_bottom = 164.0
 theme_override_font_sizes/font_size = 25
 text = "Paste Avalable:"
 
+[node name="Selected" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 170.0
+offset_right = 212.0
+offset_bottom = 205.0
+theme_override_font_sizes/font_size = 25
+text = "Selcetecd:"
+
 [node name="Ctrl C" type="Sprite2D" parent="."]
 position = Vector2(98, 600)
 scale = Vector2(2, 2)
@@ -86,28 +95,34 @@ frame = 4
 [node name="Copy Icon" type="Sprite2D" parent="."]
 position = Vector2(186, 600)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 
 [node name="Cut Icon" type="Sprite2D" parent="."]
 position = Vector2(378, 598)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 1
 
 [node name="Undo Icon" type="Sprite2D" parent="."]
 position = Vector2(586, 592)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 2
 
 [node name="Paste Icon" type="Sprite2D" parent="."]
 position = Vector2(828, 606)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 3
 
 [node name="Reload Icon" type="Sprite2D" parent="."]
 position = Vector2(1090, 60)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 4
+
+[node name="Selected Icon" type="Sprite2D" parent="."]
+position = Vector2(237, 188)
+texture = ExtResource("3_bjfho")
+vframes = 7
+frame = 5
