@@ -95,28 +95,34 @@ frame = 4
 [node name="Copy Icon" type="Sprite2D" parent="."]
 position = Vector2(186, 600)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 
 [node name="Cut Icon" type="Sprite2D" parent="."]
 position = Vector2(378, 598)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 1
 
 [node name="Undo Icon" type="Sprite2D" parent="."]
 position = Vector2(586, 592)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 2
 
 [node name="Paste Icon" type="Sprite2D" parent="."]
 position = Vector2(828, 606)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 3
 
 [node name="Reload Icon" type="Sprite2D" parent="."]
 position = Vector2(1090, 60)
 texture = ExtResource("3_bjfho")
-vframes = 5
+vframes = 7
 frame = 4
+
+[node name="Selected Icon" type="Sprite2D" parent="."]
+position = Vector2(237, 188)
+texture = ExtResource("3_bjfho")
+vframes = 7
+frame = 5

@@ -76,7 +76,7 @@ Passed"
 position = Vector2(111, 234)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
 limit_right = 1216
@@ -102,12 +102,16 @@ position = Vector2(896, 432)
 type = 3
 
 [node name="Cut" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(928, 736)
+position = Vector2(1072, 623)
 type = 2
 
+[node name="Copy3" parent="Collectables" instance=ExtResource("5_scca2")]
+position = Vector2(1072, 672)
+type = 1
+
 [node name="Cut2" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(704, 559)
+position = Vector2(832, 607)
 type = 2
 
 [node name="Box" parent="." instance=ExtResource("6_rhj13")]
-position = Vector2(296, 193)
+position = Vector2(776, 596)

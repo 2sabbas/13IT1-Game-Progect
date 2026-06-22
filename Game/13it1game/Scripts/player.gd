@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var speed = 125
+@export var speed = 100
 var cur_dir = "none"
 
 
