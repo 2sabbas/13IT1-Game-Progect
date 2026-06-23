@@ -14,8 +14,10 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	sprite.frame = 0
+	if !self.get_overlapping_bodies().is_empty():
+		sprite.frame = 2
 
 
 func _on_body_exited(body: Node2D) -> void:
-	sprite.frame = 2
+	if self.get_overlapping_bodies().is_empty():
+		sprite.frame = 0

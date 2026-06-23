@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn3nq68wc5eek"]
+[gd_scene load_steps=10 format=3 uid="uid://bn3nq68wc5eek"]
 
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="1_tqwtp"]
 [ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_qjdhv"]
+[ext_resource type="Theme" uid="uid://bqlu65r12fskd" path="res://Theme/Si-fi label theme.tres" id="3_bcvf7"]
 [ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="3_fsic1"]
 [ext_resource type="Script" path="res://Scripts/rts_node.gd" id="4_f5bqe"]
 [ext_resource type="PackedScene" uid="uid://db4x25ak0mpwr" path="res://Scenes/collectable.tscn" id="5_scca2"]
@@ -36,10 +37,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Map" parent="." instance=ExtResource("2_qjdhv")]
 
-[node name="Tutorial Instructions" type="Node2D" parent="."]
-position = Vector2(32, 65)
+[node name="Tutorial Instructions" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 32.0
+offset_top = 65.0
+offset_right = 32.0
+offset_bottom = 65.0
+theme = ExtResource("3_bcvf7")
 
 [node name="Label" type="Label" parent="Tutorial Instructions"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 101.0
 offset_right = 183.0
@@ -48,6 +56,7 @@ text = "Make it to
 the end  ---->"
 
 [node name="Label2" type="Label" parent="Tutorial Instructions"]
+layout_mode = 0
 offset_left = 158.0
 offset_top = 181.0
 offset_right = 299.0
@@ -56,6 +65,7 @@ text = "Use the mouse to
 select the bridge"
 
 [node name="Label3" type="Label" parent="Tutorial Instructions"]
+layout_mode = 0
 offset_left = 436.0
 offset_top = 175.0
 offset_right = 585.0
@@ -66,6 +76,7 @@ where your mouse
 is"
 
 [node name="Label4" type="Label" parent="Tutorial Instructions"]
+layout_mode = 0
 offset_left = 925.0
 offset_top = 140.0
 offset_right = 1007.0
@@ -95,7 +106,7 @@ position = Vector2(480, 34)
 type = 1
 
 [node name="Copy2" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(1056, 128)
+position = Vector2(1053, 208)
 type = 1
 
 [node name="Undo" parent="Collectables" instance=ExtResource("5_scca2")]
@@ -118,7 +129,4 @@ type = 2
 position = Vector2(776, 596)
 
 [node name="Pressure Plate" parent="." instance=ExtResource("7_djr2s")]
-position = Vector2(271, 232)
-
-[node name="Box2" parent="." instance=ExtResource("6_rhj13")]
-position = Vector2(295, 184)
+position = Vector2(694, 721)

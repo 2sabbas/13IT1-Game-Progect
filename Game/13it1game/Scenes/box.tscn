@@ -10,16 +10,17 @@ size = Vector2(16, 14)
 polygon = PackedVector2Array(-8, 10, -8, -10, 8, -10, 8, 10)
 
 [node name="Box" type="CharacterBody2D"]
-y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_uhnhb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
 texture = ExtResource("1_xkb4e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_ego7h")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, -9)
 occluder = SubResource("OccluderPolygon2D_ur5jg")
