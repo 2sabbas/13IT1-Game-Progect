@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://cipwdyy0qh63o"]
 
-[ext_resource type="Script" uid="uid://d0ax32mqfe3o5" path="res://Scripts/player.gd" id="1_82sqb"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_82sqb"]
 [ext_resource type="Texture2D" uid="uid://dmfcu1kcgwrdt" path="res://Assets/Character/player.png" id="2_cvnsp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
@@ -293,7 +293,7 @@ radius = 3.0
 height = 12.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cvnsp"]
-polygon = PackedVector2Array(-4, 1, 5, 1, 6, -1, 6, -3, 5, -4, -4, -4, -5, -3, -5, -1)
+polygon = PackedVector2Array(-4, 1, 5, 1, 6, -1, 6, -3, 5, -4, 7, -10, 7, -14, 5, -17, 3, -18, -4, -18, -4, -16, -6, -14, -6, -9, -4, -5, -4, -4, -5, -3, -5, -1)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
