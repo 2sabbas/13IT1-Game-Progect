@@ -122,11 +122,11 @@ position = Vector2(1072, 672)
 type = 1
 
 [node name="Cut2" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(832, 607)
+position = Vector2(697, 586)
 type = 2
 
 [node name="Box" parent="." instance=ExtResource("6_rhj13")]
-position = Vector2(776, 596)
+position = Vector2(728, 605)
 
 [node name="Pressure Plate" parent="." instance=ExtResource("7_djr2s")]
-position = Vector2(694, 721)
+position = Vector2(832, 825)
