@@ -851,6 +851,18 @@ texture = ExtResource("3_q0mm3")
 0:1/0/y_sort_origin = 16
 0:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ab1qy")
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, 16, 8, 16, 8, 0, 6, 0)
+3:1/size_in_atlas = Vector2i(1, 2)
+3:1/0 = 0
+3:1/0/y_sort_origin = 16
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, 16, 8, 16, 8, 0, 6, 0)
+5:1/size_in_atlas = Vector2i(1, 2)
+5:1/0 = 0
+5:1/0/y_sort_origin = 16
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 16, -6, 16, -6, 0, -8, 0)
+4:0/size_in_atlas = Vector2i(1, 2)
+4:0/0 = 0
+4:0/0/y_sort_origin = 2
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, 8, 2, -8, 2, -8, 0)
 
 [sub_resource type="TileSet" id="TileSet_p3ir5"]
 occlusion_layer_0/light_mask = 1
