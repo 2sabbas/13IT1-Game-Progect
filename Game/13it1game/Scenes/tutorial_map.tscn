@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn3nq68wc5eek"]
+[gd_scene load_steps=12 format=3 uid="uid://bn3nq68wc5eek"]
 
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="1_tqwtp"]
 [ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_qjdhv"]
-[ext_resource type="Theme" uid="uid://bqlu65r12fskd" path="res://Theme/Si-fi label theme.tres" id="3_bcvf7"]
 [ext_resource type="PackedScene" uid="uid://cipwdyy0qh63o" path="res://Scenes/player.tscn" id="3_fsic1"]
 [ext_resource type="Script" path="res://Scripts/rts_node.gd" id="4_f5bqe"]
 [ext_resource type="PackedScene" uid="uid://db4x25ak0mpwr" path="res://Scenes/collectable.tscn" id="5_scca2"]
 [ext_resource type="PackedScene" uid="uid://3ovfae3infse" path="res://Scenes/box.tscn" id="6_rhj13"]
 [ext_resource type="PackedScene" uid="uid://bpri8nt4j7w3v" path="res://Scenes/pressure_plate.tscn" id="7_djr2s"]
+[ext_resource type="PackedScene" uid="uid://dabxu50yh8jxp" path="res://Scenes/instruction.tscn" id="9_1uuve"]
+[ext_resource type="Texture2D" uid="uid://cy7laug2n2bnm" path="res://Assets/Sprites/Vertical Pressure Plate Gate.png" id="9_2k5d3"]
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 3
@@ -20,6 +21,9 @@ glow_bloom = 0.4
 glow_blend_mode = 1
 adjustment_enabled = true
 adjustment_contrast = 1.05
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8taf8"]
+size = Vector2(8, 64)
 
 [node name="Tutorial Map" type="Node2D"]
 y_sort_enabled = true
@@ -37,65 +41,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Map" parent="." instance=ExtResource("2_qjdhv")]
 
-[node name="Tutorial Instructions" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 32.0
-offset_top = 65.0
-offset_right = 32.0
-offset_bottom = 65.0
-theme = ExtResource("3_bcvf7")
-
-[node name="Label" type="Label" parent="Tutorial Instructions"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 101.0
-offset_right = 183.0
-offset_bottom = 150.0
-text = "Make it to 
-the end  ---->"
-
-[node name="Label2" type="Label" parent="Tutorial Instructions"]
-layout_mode = 0
-offset_left = 158.0
-offset_top = 181.0
-offset_right = 299.0
-offset_bottom = 230.0
-text = "Use the mouse to 
-select the bridge"
-
-[node name="Label3" type="Label" parent="Tutorial Instructions"]
-layout_mode = 0
-offset_left = 436.0
-offset_top = 175.0
-offset_right = 585.0
-offset_bottom = 276.0
-text = "Use the Ctr + V to
-paste the bridge 
-where your mouse 
-is"
-
-[node name="Label4" type="Label" parent="Tutorial Instructions"]
-layout_mode = 0
-offset_left = 925.0
-offset_top = 140.0
-offset_right = 1007.0
-offset_bottom = 197.0
-text = "You Have 
-Passed"
+[node name="RTS-Node" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("4_f5bqe")
 
 [node name="Player" parent="." instance=ExtResource("3_fsic1")]
-position = Vector2(111, 234)
+position = Vector2(111, 233)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-limit_left = 0
-limit_top = 0
-limit_right = 1216
-limit_bottom = 911
+[node name="Instructions" parent="." instance=ExtResource("9_1uuve")]
+position = Vector2(168, 186)
 
-[node name="RTS-Node" type="Node2D" parent="."]
-script = ExtResource("4_f5bqe")
+[node name="Tutorial Instructions Positions" type="Node2D" parent="."]
 
 [node name="Collectables" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -122,11 +78,25 @@ position = Vector2(1072, 672)
 type = 1
 
 [node name="Cut2" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(697, 586)
+position = Vector2(637, 596)
 type = 2
 
 [node name="Box" parent="." instance=ExtResource("6_rhj13")]
-position = Vector2(728, 605)
+position = Vector2(848, 653)
 
-[node name="Pressure Plate" parent="." instance=ExtResource("7_djr2s")]
-position = Vector2(832, 825)
+[node name="Pressure Plate" parent="." node_paths=PackedStringArray("gate_sprite", "gate_collision_shape") instance=ExtResource("7_djr2s")]
+position = Vector2(824, 721)
+gate_sprite = NodePath("Gate3/Gate Sprite2D")
+gate_collision_shape = NodePath("Gate3/Gate CollisionShape2D")
+
+[node name="Gate3" type="StaticBody2D" parent="Pressure Plate"]
+position = Vector2(-96, -20)
+
+[node name="Gate Sprite2D" type="Sprite2D" parent="Pressure Plate/Gate3"]
+position = Vector2(0, 27)
+texture = ExtResource("9_2k5d3")
+hframes = 2
+
+[node name="Gate CollisionShape2D" type="CollisionShape2D" parent="Pressure Plate/Gate3"]
+position = Vector2(0, 35)
+shape = SubResource("RectangleShape2D_8taf8")

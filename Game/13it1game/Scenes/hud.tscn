@@ -24,37 +24,37 @@ text = "Copies Avalable:"
 
 [node name="Undos Available" type="Label" parent="."]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 56.0
-offset_right = 215.0
-offset_bottom = 91.0
+offset_left = 301.0
+offset_top = 12.0
+offset_right = 497.0
+offset_bottom = 47.0
 theme_override_font_sizes/font_size = 25
 text = "Undos Avalable:"
 
 [node name="Cuts Available" type="Label" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 94.0
-offset_right = 214.0
-offset_bottom = 129.0
+offset_left = 16.0
+offset_top = 53.0
+offset_right = 212.0
+offset_bottom = 88.0
 theme_override_font_sizes/font_size = 25
 text = "Cuts Avalable:"
 
 [node name="Paste  Available" type="Label" parent="."]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 129.0
-offset_right = 213.0
-offset_bottom = 164.0
+offset_left = 305.0
+offset_top = 50.0
+offset_right = 501.0
+offset_bottom = 85.0
 theme_override_font_sizes/font_size = 25
 text = "Paste Avalable:"
 
 [node name="Selected" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 170.0
-offset_right = 212.0
-offset_bottom = 205.0
+offset_left = 17.0
+offset_top = 94.0
+offset_right = 213.0
+offset_bottom = 129.0
 theme_override_font_sizes/font_size = 25
 text = "Selcetecd:"
 
@@ -62,34 +62,34 @@ text = "Selcetecd:"
 position = Vector2(98, 600)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 5
+vframes = 6
 
 [node name="Ctrl X" type="Sprite2D" parent="."]
 position = Vector2(287, 601)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 5
+vframes = 6
 frame = 1
 
 [node name="Ctrl Z" type="Sprite2D" parent="."]
 position = Vector2(501, 599)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 5
+vframes = 6
 frame = 2
 
 [node name="Ctrl V" type="Sprite2D" parent="."]
 position = Vector2(737, 606)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 5
+vframes = 6
 frame = 3
 
 [node name="Ctrl R" type="Sprite2D" parent="."]
 position = Vector2(998, 62)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 5
+vframes = 6
 frame = 4
 
 [node name="Copy Icon" type="Sprite2D" parent="."]
@@ -122,7 +122,7 @@ vframes = 7
 frame = 4
 
 [node name="Selected Icon" type="Sprite2D" parent="."]
-position = Vector2(237, 188)
+position = Vector2(255, 108)
 texture = ExtResource("3_bjfho")
 vframes = 7
 frame = 5

@@ -13,6 +13,7 @@ var copy_method = ""
 
 
 func _ready() -> void:
+	Global.selected = has_selected
 	var map = get_parent().get_node("Map")
 	for child in map.get_children():
 		if child is TileMapLayer and child.name in layers_to_copy:
@@ -26,6 +27,7 @@ func _input(event: InputEvent) -> void:
 		selection_end_point = selection_start_point
 		is_selecting = true
 		has_selected = false
+		Global.selected = has_selected
 	# mouse released - freeze the box in place
 	else:
 		if (Input.is_action_just_released("left_click")):
@@ -33,7 +35,7 @@ func _input(event: InputEvent) -> void:
 			is_selecting = false
 			if (selection_start_point.distance_to(selection_end_point) > 8):
 				has_selected = true
-				Global.selected = true
+				Global.selected = has_selected
 			else:
 				selection_start_point = Vector2.ZERO
 				selection_end_point = Vector2.ZERO
@@ -46,7 +48,7 @@ func _input(event: InputEvent) -> void:
 		selection_end_point = Vector2.ZERO
 		is_selecting = false
 		has_selected = false
-		Global.selected = false
+		Global.selected = has_selected
 		copy_method = "copy"
 		Global.num_of_copies_available -= 1
 		Global.paste_available = !clipboard.is_empty()
@@ -63,7 +65,7 @@ func _input(event: InputEvent) -> void:
 		selection_end_point = Vector2.ZERO
 		is_selecting = false
 		has_selected = false
-		Global.selected = false
+		Global.selected = has_selected
 		copy_method = "cut"
 		Global.num_of_cuts_available -= 1
 		Global.paste_available = !clipboard.is_empty()
