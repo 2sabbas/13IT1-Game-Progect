@@ -48,10 +48,16 @@ script = ExtResource("4_f5bqe")
 [node name="Player" parent="." instance=ExtResource("3_fsic1")]
 position = Vector2(111, 233)
 
-[node name="Instructions" parent="." instance=ExtResource("9_1uuve")]
-position = Vector2(168, 186)
+[node name="Instructions" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("9_1uuve")]
+markers = [NodePath("../Tutorial Instructions Positions/Marker2D_1"), NodePath("../Tutorial Instructions Positions/Marker2D_2")]
 
 [node name="Tutorial Instructions Positions" type="Node2D" parent="."]
+
+[node name="Marker2D_1" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(172, 233)
+
+[node name="Marker2D_2" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(244, 233)
 
 [node name="Collectables" type="Node2D" parent="."]
 y_sort_enabled = true

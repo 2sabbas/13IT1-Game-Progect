@@ -89,25 +89,35 @@ shape = SubResource("CircleShape2D_eumrg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_y81a8")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -40.0
-offset_top = -124.0
-offset_right = 120.0
-offset_bottom = 71.0
-scale = Vector2(0.5, 0.5)
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -111.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="PanelContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
 theme = ExtResource("3_rft24")
 text = "Instructions:"
+horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Label"]
+[node name="Sprite2D2" type="Sprite2D" parent="PanelContainer/Label"]
 position = Vector2(80, 190)
 scale = Vector2(2, 2)
 texture = ExtResource("4_uwrii")
 vframes = 6
 frame = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PanelContainer/Label"]
 libraries = {
 "": SubResource("AnimationLibrary_nmudh")
 }
