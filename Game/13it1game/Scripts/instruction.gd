@@ -3,15 +3,21 @@ extends Area2D
 var player_close = false
 
 @onready var label: Label = $PanelContainer/Label
-@onready var animation_player: AnimationPlayer = $PanelContainer/Label/AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var markers: Array[Marker2D]
 
 var instruction_counter = 0
 
 var instructions: Array = [
-	"One", 
-	"Two", 
+	"Use WASD to move", 
+	"Make it to the end of the map   --->", 
+	"You need to get accross the water", 
+	"Go up and get the copy pickup", 
+	"Now loog at your copy counter, it has gone up, meaning you can now copy an object once", 
+	"You can now make your way back to the bridge from before", 
+	"you can use your mouse to drag select the bridge and press Ctrl + C to copy it", 
+	"After you have copied the bridge, you can move your mouse to the water you need to cross and press Ctrl + V to paste it", 
 ]
 
 
