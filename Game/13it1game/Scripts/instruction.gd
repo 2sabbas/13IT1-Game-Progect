@@ -10,13 +10,15 @@ var player_close = false
 var instruction_counter = 0
 
 var instructions: Array = [
-	"Use WASD to move", 
+	"Use WASD to move
+	press enter to get the next instruction", 
 	"Make it to the end of the map   --->", 
 	"You need to get accross the water", 
 	"Go up and get the copy pickup", 
 	"Now loog at your copy counter, it has gone up, meaning you can now copy an object once", 
 	"You can now make your way back to the bridge from before", 
 	"you can use your mouse to drag select the bridge and press Ctrl + C to copy it", 
+	"If you make a mistake. you can press Ctrl + R to reload", 
 	"After you have copied the bridge, you can move your mouse to the water you need to cross and press Ctrl + V to paste it", 
 ]
 

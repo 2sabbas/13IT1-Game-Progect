@@ -49,15 +49,15 @@ script = ExtResource("4_f5bqe")
 position = Vector2(111, 233)
 
 [node name="Instructions" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("9_1uuve")]
-markers = [NodePath("../Tutorial Instructions Positions/Marker2D_1"), NodePath("../Tutorial Instructions Positions/Marker2D_2"), NodePath("../Tutorial Instructions Positions/Marker2D_3"), NodePath("../Tutorial Instructions Positions/Marker2D_4"), NodePath("../Tutorial Instructions Positions/Marker2D_5"), NodePath("../Tutorial Instructions Positions/Marker2D_6"), NodePath("../Tutorial Instructions Positions/Marker2D_7"), NodePath("../Tutorial Instructions Positions/Marker2D_8")]
+markers = [NodePath("../Tutorial Instructions Positions/Marker2D_1"), NodePath("../Tutorial Instructions Positions/Marker2D_2"), NodePath("../Tutorial Instructions Positions/Marker2D_3"), NodePath("../Tutorial Instructions Positions/Marker2D_4"), NodePath("../Tutorial Instructions Positions/Marker2D_5"), NodePath("../Tutorial Instructions Positions/Marker2D_6"), NodePath("../Tutorial Instructions Positions/Marker2D_7"), NodePath("../Tutorial Instructions Positions/Marker2D_8"), NodePath("../Tutorial Instructions Positions/Marker2D_9")]
 
 [node name="Tutorial Instructions Positions" type="Node2D" parent="."]
 
 [node name="Marker2D_1" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(269, 230)
+position = Vector2(112, 231)
 
 [node name="Marker2D_2" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(372, 233)
+position = Vector2(336, 233)
 
 [node name="Marker2D_3" type="Marker2D" parent="Tutorial Instructions Positions"]
 position = Vector2(559, 232)
@@ -66,7 +66,7 @@ position = Vector2(559, 232)
 position = Vector2(512, 187)
 
 [node name="Marker2D_5" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(511, 97)
+position = Vector2(512, 92)
 
 [node name="Marker2D_6" type="Marker2D" parent="Tutorial Instructions Positions"]
 position = Vector2(511, 137)
@@ -75,6 +75,9 @@ position = Vector2(511, 137)
 position = Vector2(476, 231)
 
 [node name="Marker2D_8" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(523, 232)
+
+[node name="Marker2D_9" type="Marker2D" parent="Tutorial Instructions Positions"]
 position = Vector2(570, 231)
 
 [node name="Collectables" type="Node2D" parent="."]
