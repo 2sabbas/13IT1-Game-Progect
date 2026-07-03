@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn3nq68wc5eek"]
+[gd_scene load_steps=11 format=3 uid="uid://bn3nq68wc5eek"]
 
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="1_tqwtp"]
 [ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_qjdhv"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://3ovfae3infse" path="res://Scenes/box.tscn" id="6_rhj13"]
 [ext_resource type="PackedScene" uid="uid://bpri8nt4j7w3v" path="res://Scenes/pressure_plate.tscn" id="7_djr2s"]
 [ext_resource type="PackedScene" uid="uid://cwfql7iuk7wmh" path="res://Scenes/instruction.tscn" id="9_1uuve"]
-[ext_resource type="Texture2D" uid="uid://cy7laug2n2bnm" path="res://Assets/Sprites/Vertical Pressure Plate Gate.png" id="9_2k5d3"]
+[ext_resource type="PackedScene" uid="uid://cj61r4u6i0f8y" path="res://Scenes/gate.tscn" id="9_6kqb7"]
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 3
@@ -21,9 +21,6 @@ glow_bloom = 0.4
 glow_blend_mode = 1
 adjustment_enabled = true
 adjustment_contrast = 1.05
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8taf8"]
-size = Vector2(8, 64)
 
 [node name="Tutorial Map" type="Node2D"]
 y_sort_enabled = true
@@ -97,30 +94,12 @@ type = 3
 position = Vector2(1072, 623)
 type = 2
 
-[node name="Copy3" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(1072, 672)
-type = 1
-
-[node name="Cut2" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(637, 596)
-type = 2
-
 [node name="Box" parent="." instance=ExtResource("6_rhj13")]
 position = Vector2(848, 653)
 
-[node name="Pressure Plate" parent="." node_paths=PackedStringArray("gate_sprite", "gate_collision_shape") instance=ExtResource("7_djr2s")]
+[node name="Pressure Plate" parent="." node_paths=PackedStringArray("Gate") instance=ExtResource("7_djr2s")]
 position = Vector2(824, 721)
-gate_sprite = NodePath("Gate3/Gate Sprite2D")
-gate_collision_shape = NodePath("Gate3/Gate CollisionShape2D")
+Gate = NodePath("../Gate")
 
-[node name="Gate3" type="StaticBody2D" parent="Pressure Plate"]
-position = Vector2(-96, -20)
-
-[node name="Gate Sprite2D" type="Sprite2D" parent="Pressure Plate/Gate3"]
-position = Vector2(0, 27)
-texture = ExtResource("9_2k5d3")
-hframes = 2
-
-[node name="Gate CollisionShape2D" type="CollisionShape2D" parent="Pressure Plate/Gate3"]
-position = Vector2(0, 35)
-shape = SubResource("RectangleShape2D_8taf8")
+[node name="Gate" parent="." instance=ExtResource("9_6kqb7")]
+position = Vector2(728, 706)
