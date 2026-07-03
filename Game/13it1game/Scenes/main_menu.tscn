@@ -31,7 +31,7 @@ alignment = 1
 
 [node name="Play Tutorial" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Play Tutorial (Recomended)"
+text = "Play Tutorial (Recommended)"
 
 [node name="Play World" type="Button" parent="VBoxContainer"]
 layout_mode = 2

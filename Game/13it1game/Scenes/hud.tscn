@@ -1,8 +1,157 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4cp7qqhtceeu"]
+[gd_scene load_steps=19 format=3 uid="uid://d4cp7qqhtceeu"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_nnwsq"]
 [ext_resource type="Texture2D" uid="uid://ch8t1qxc831na" path="res://Assets/UI/Comand Keys Sprite Sheet.png" id="2_fccik"]
 [ext_resource type="Texture2D" uid="uid://d26v4y37kwmtb" path="res://Assets/UI/Shortcut Icons.png" id="3_bjfho"]
+[ext_resource type="Texture2D" uid="uid://byiaacouo1cq1" path="res://Assets/UI/WASD Keys.png" id="4_f4sq5"]
+[ext_resource type="FontFile" uid="uid://5qfysv5ujklq" path="res://Theme/Minecraft.ttf" id="4_qmw02"]
+[ext_resource type="Texture2D" uid="uid://bksfvlbfxkjt7" path="res://Assets/UI/Arrow Keys.png" id="5_uv3h6"]
+[ext_resource type="Theme" uid="uid://bqlu65r12fskd" path="res://Theme/Si-fi label theme.tres" id="7_qp36d"]
+
+[sub_resource type="Animation" id="Animation_xpm1a"]
+resource_name = "Fade_Out_Controls"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 0.4, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pmf38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjaj2"]
+_data = {
+"Fade_Out_Controls": SubResource("Animation_xpm1a"),
+"RESET": SubResource("Animation_pmf38")
+}
+
+[sub_resource type="Animation" id="Animation_8cxas"]
+resource_name = "Fade_out_controls"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controls:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 0.4, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q7jut"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controls:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ypa6"]
+_data = {
+"Fade_out_controls": SubResource("Animation_8cxas"),
+"RESET": SubResource("Animation_q7jut")
+}
+
+[sub_resource type="Animation" id="Animation_87ggo"]
+resource_name = "Fade_instruction_in"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Instructions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vm0e3"]
+resource_name = "Fade_instruction_out"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Instructions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dxux6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Instructions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_boih7"]
+resource_name = "Hide_instruction"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Instructions:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0lgew"]
+_data = {
+"Fade_instruction_in": SubResource("Animation_87ggo"),
+"Fade_instruction_out": SubResource("Animation_vm0e3"),
+"Hide_instruction": SubResource("Animation_boih7"),
+"RESET": SubResource("Animation_dxux6")
+}
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -15,114 +164,240 @@ script = ExtResource("1_nnwsq")
 
 [node name="Copies Available" type="Label" parent="."]
 layout_mode = 0
-offset_left = 19.0
-offset_top = 15.0
-offset_right = 59.0
-offset_bottom = 38.0
-theme_override_font_sizes/font_size = 25
-text = "Copies Avalable:"
-
-[node name="Undos Available" type="Label" parent="."]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 92.0
-offset_right = 207.0
-offset_bottom = 127.0
-theme_override_font_sizes/font_size = 25
-text = "Undos Avalable:"
+offset_left = 202.0
+offset_top = 21.0
+offset_right = 220.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+theme_override_font_sizes/font_size = 32
+text = "0"
 
 [node name="Cuts Available" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 53.0
-offset_right = 212.0
-offset_bottom = 88.0
-theme_override_font_sizes/font_size = 25
-text = "Cuts Avalable:"
+offset_left = 202.0
+offset_top = 61.0
+offset_right = 220.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Undos Available" type="Label" parent="."]
+layout_mode = 0
+offset_left = 202.0
+offset_top = 101.0
+offset_right = 220.0
+offset_bottom = 133.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+theme_override_font_sizes/font_size = 32
+text = "0"
 
 [node name="Paste  Available" type="Label" parent="."]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 130.0
-offset_right = 211.0
-offset_bottom = 165.0
-theme_override_font_sizes/font_size = 25
-text = "Paste Avalable:"
+offset_left = 202.0
+offset_top = 141.0
+offset_right = 220.0
+offset_bottom = 173.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+theme_override_font_sizes/font_size = 32
+text = "0"
 
 [node name="Selected" type="Label" parent="."]
 layout_mode = 0
-offset_left = 15.0
-offset_top = 170.0
-offset_right = 211.0
-offset_bottom = 205.0
-theme_override_font_sizes/font_size = 25
+offset_left = 16.0
+offset_top = 187.0
+offset_right = 212.0
+offset_bottom = 222.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+theme_override_font_sizes/font_size = 32
 text = "Selcetecd:"
 
+[node name="Help" type="Label" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 509.0
+offset_right = 187.0
+offset_bottom = 544.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+theme_override_font_sizes/font_size = 32
+text = "Keybinds:"
+
 [node name="Ctrl C" type="Sprite2D" parent="."]
-position = Vector2(98, 600)
+position = Vector2(89, 33)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 6
+vframes = 7
+
+[node name="Copy Icon" type="Sprite2D" parent="Ctrl C"]
+position = Vector2(44.5, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bjfho")
+vframes = 7
 
 [node name="Ctrl X" type="Sprite2D" parent="."]
-position = Vector2(287, 601)
+position = Vector2(89, 73)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 6
+vframes = 7
+frame = 1
+
+[node name="Cut Icon" type="Sprite2D" parent="Ctrl X"]
+position = Vector2(44.5, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bjfho")
+vframes = 7
 frame = 1
 
 [node name="Ctrl Z" type="Sprite2D" parent="."]
-position = Vector2(501, 599)
+position = Vector2(89, 113)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 6
+vframes = 7
+frame = 2
+
+[node name="Undo Icon" type="Sprite2D" parent="Ctrl Z"]
+position = Vector2(44.5, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bjfho")
+vframes = 7
 frame = 2
 
 [node name="Ctrl V" type="Sprite2D" parent="."]
-position = Vector2(737, 606)
+position = Vector2(89, 153)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 6
+vframes = 7
+frame = 3
+
+[node name="Paste Icon" type="Sprite2D" parent="Ctrl V"]
+position = Vector2(44.5, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_bjfho")
+vframes = 7
 frame = 3
 
 [node name="Ctrl R" type="Sprite2D" parent="."]
 position = Vector2(998, 62)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
-vframes = 6
+vframes = 7
 frame = 4
 
-[node name="Copy Icon" type="Sprite2D" parent="."]
-position = Vector2(186, 600)
-texture = ExtResource("3_bjfho")
-vframes = 7
-
-[node name="Cut Icon" type="Sprite2D" parent="."]
-position = Vector2(378, 598)
-texture = ExtResource("3_bjfho")
-vframes = 7
-frame = 1
-
-[node name="Undo Icon" type="Sprite2D" parent="."]
-position = Vector2(586, 592)
-texture = ExtResource("3_bjfho")
-vframes = 7
-frame = 2
-
-[node name="Paste Icon" type="Sprite2D" parent="."]
-position = Vector2(828, 606)
-texture = ExtResource("3_bjfho")
-vframes = 7
-frame = 3
-
-[node name="Reload Icon" type="Sprite2D" parent="."]
-position = Vector2(1090, 60)
+[node name="Reload Icon" type="Sprite2D" parent="Ctrl R"]
+position = Vector2(46, -1)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_bjfho")
 vframes = 7
 frame = 4
+
+[node name="Ctrl H" type="Sprite2D" parent="."]
+position = Vector2(115, 568)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 7
+frame = 5
 
 [node name="Selected Icon" type="Sprite2D" parent="."]
-position = Vector2(253, 184)
+position = Vector2(244, 201)
 texture = ExtResource("3_bjfho")
 vframes = 7
 frame = 5
+
+[node name="Controls" type="Label" parent="."]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 80.0
+offset_right = 667.0
+offset_bottom = 259.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+theme_override_font_sizes/font_size = 16
+text = "To Move 
+
+
+To Copy            To Paste
+
+
+To Undo            To Cut
+
+
+To Reload the map"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controls"]
+libraries = {
+"": SubResource("AnimationLibrary_tjaj2")
+}
+autoplay = "Fade_Out_Controls"
+
+[node name="WASD" type="Sprite2D" parent="Controls"]
+position = Vector2(48, -29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_f4sq5")
+
+[node name="Arrow Keys" type="Sprite2D" parent="Controls"]
+position = Vector2(144, -29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_uv3h6")
+
+[node name="CTRL C" type="Sprite2D" parent="Controls"]
+position = Vector2(27, 38)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 7
+
+[node name="CTRL V" type="Sprite2D" parent="Controls"]
+position = Vector2(171, 38)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 7
+frame = 3
+
+[node name="CTRL Z" type="Sprite2D" parent="Controls"]
+position = Vector2(29, 95)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 7
+frame = 2
+
+[node name="CTRL X" type="Sprite2D" parent="Controls"]
+position = Vector2(173, 95)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 7
+frame = 1
+
+[node name="CTRL R" type="Sprite2D" parent="Controls"]
+position = Vector2(101, 152)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 7
+frame = 4
+
+[node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5ypa6")
+}
+autoplay = "Fade_out_controls"
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 488.0
+offset_right = 1096.0
+offset_bottom = 616.0
+theme = ExtResource("7_qp36d")
+theme_override_font_sizes/font_size = 32
+autowrap_mode = 2
+
+[node name="Enter Key" type="Sprite2D" parent="Instructions"]
+position = Vector2(766, 107)
+scale = Vector2(2, 2)
+texture = ExtResource("2_fccik")
+vframes = 7
+frame = 6
+
+[node name="InstructionAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0lgew")
+}
+autoplay = "Hide_instruction"

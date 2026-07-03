@@ -11,6 +11,11 @@ var clipboard: Array = []
 var undo_history: Array = []
 var copy_method = ""
 
+var starting_copy_amount = Global.num_of_copies_available
+var starting_cut_amount = Global.num_of_cuts_available
+var starting_undo_amount = Global.num_of_undos_available
+var starting_paste_state = Global.paste_available
+var starting_select_state = Global.selected
 
 func _ready() -> void:
 	Global.selected = has_selected
@@ -77,6 +82,11 @@ func _input(event: InputEvent) -> void:
 	
 	#Reset Scene
 	if Input.is_action_just_pressed("reset"):
+		Global.num_of_copies_available = starting_copy_amount
+		Global.num_of_cuts_available = starting_cut_amount
+		Global.num_of_undos_available = starting_undo_amount
+		Global.paste_available = starting_paste_state
+		Global.selected = starting_select_state
 		get_tree().reload_current_scene()
 
 
