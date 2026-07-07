@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn3nq68wc5eek"]
+[gd_scene load_steps=12 format=3 uid="uid://bn3nq68wc5eek"]
 
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="1_tqwtp"]
 [ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_qjdhv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bpri8nt4j7w3v" path="res://Scenes/pressure_plate.tscn" id="7_djr2s"]
 [ext_resource type="PackedScene" uid="uid://cwfql7iuk7wmh" path="res://Scenes/instruction.tscn" id="9_1uuve"]
 [ext_resource type="PackedScene" uid="uid://cj61r4u6i0f8y" path="res://Scenes/gate.tscn" id="9_6kqb7"]
+[ext_resource type="PackedScene" uid="uid://b3jwp0d7goajo" path="res://Scenes/finish_portal.tscn" id="10_giyw3"]
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 3
@@ -103,3 +104,6 @@ Gate = NodePath("../Gate")
 
 [node name="Gate" parent="." instance=ExtResource("9_6kqb7")]
 position = Vector2(728, 706)
+
+[node name="Finish Portal" parent="." instance=ExtResource("10_giyw3")]
+position = Vector2(509, 718)
