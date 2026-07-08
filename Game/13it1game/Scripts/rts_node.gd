@@ -4,6 +4,7 @@ extends Node2D
 var layers_to_copy = ["Editable Regions", "Ysort Editable Regions"]
 @onready var highlighted_layers: Array[TileMapLayer] = []
 var highlight_layer_names = ["Highlights"]
+var highlight_visible = true
 const HIGHLIGHT_SOURCE_ID := 4
 const TERRAIN_SET := 0
 const TERRAIN := 2
@@ -15,6 +16,8 @@ var has_selected = false
 var clipboard: Array = []
 var undo_history: Array = []
 var copy_method = ""
+var copied_size = Vector2.ZERO
+var paste_preview_enabled = true
 
 
 func _ready() -> void:
@@ -46,7 +49,7 @@ func _input(event: InputEvent) -> void:
 		if (Input.is_action_just_released("left_click")):
 			selection_end_point = get_global_mouse_position()
 			is_selecting = false
-			if (selection_start_point.distance_to(selection_end_point) > 4):
+			if (selection_start_point.distance_to(selection_end_point) > 8):
 				has_selected = true
 				Global.selected = has_selected
 			else:
@@ -96,6 +99,16 @@ func _input(event: InputEvent) -> void:
 		Global.paste_available = Global.initial_paste_available
 		Global.selected = Global.initial_selected
 		get_tree().reload_current_scene()
+	
+	#toggle highlight outline
+	if Input.is_action_just_pressed("toggle_highlight_outline"):
+		highlight_visible = !highlight_visible
+		for layer in highlighted_layers:
+			layer.visible = highlight_visible
+	
+	#toggle paste preview
+	if Input.is_action_just_pressed("toggle_paste_preview"):
+		paste_preview_enabled = !paste_preview_enabled
 
 
 func _process(delta: float) -> void:
@@ -113,6 +126,7 @@ func copy_selected():
 		max(selection_start_point.x, selection_end_point.x), 
 		max(selection_start_point.y, selection_end_point.y)
 	)
+	copied_size = bottom_right - top_left
 	var start_cell = Vector2i.ZERO
 	var end_cell = Vector2i.ZERO
 	
@@ -254,31 +268,32 @@ func update_highlight() -> void:
 
 
 func _draw() -> void:
-	if selection_start_point == Vector2.ZERO: return
-	
-	var start = to_local(selection_start_point)
-	var end = to_local(selection_end_point if not is_selecting else get_global_mouse_position())
-	var lineWidth = 0.5
-	var lineColor = Color.YELLOW if has_selected else Color.WHITE
-	var fillColor = Color(1, 1, 0, 0.15) if has_selected else Color(1, 1, 1, 0.15)
-	
-	var paste_start
-	var paste_end
-	var paste_lineColor = Color.GREEN
-	var paste_fillColor = Color(0, 1, 0, 0.15)
-	
-	draw_rect(Rect2(start, end - start), fillColor)
-	draw_line(Vector2(start.x, start.y), Vector2(end.x, start.y), lineColor, lineWidth)
-	draw_line(Vector2(start.x, start.y), Vector2(start.x, end.y), lineColor, lineWidth)
-	draw_line(Vector2(end.x, start.y), Vector2(end.x, end.y), lineColor, lineWidth)
-	draw_line(Vector2(start.x, end.y), Vector2(end.x, end.y), lineColor, lineWidth)
-	
-	if !clipboard.is_empty() && !is_selecting && !has_selected:
-		paste_start = start
-		paste_end = end
-		
-		draw_rect(Rect2(paste_start, paste_end - paste_start), paste_fillColor)
-		draw_line(Vector2(paste_start.x, paste_start.y), Vector2(paste_end.x, paste_start.y), paste_lineColor, lineWidth)
-		draw_line(Vector2(paste_start.x, paste_start.y), Vector2(paste_start.x, paste_end.y), paste_lineColor, lineWidth)
-		draw_line(Vector2(paste_end.x, paste_start.y), Vector2(paste_end.x, paste_end.y), paste_lineColor, lineWidth)
-		draw_line(Vector2(paste_start.x, paste_end.y), Vector2(paste_end.x, paste_end.y), paste_lineColor, lineWidth)
+	if selection_start_point != Vector2.ZERO:
+		var start = to_local(selection_start_point)
+		var end = to_local(selection_end_point if not is_selecting else get_global_mouse_position())
+
+		var lineWidth = 0.5
+		var lineColor = Color.YELLOW if has_selected else Color.WHITE
+		var fillColor = Color(1, 1, 0, 0.15) if has_selected else Color(1, 1, 1, 0.15)
+
+		draw_rect(Rect2(start, end - start), fillColor)
+		draw_line(Vector2(start.x, start.y), Vector2(end.x, start.y), lineColor, lineWidth)
+		draw_line(Vector2(start.x, start.y), Vector2(start.x, end.y), lineColor, lineWidth)
+		draw_line(Vector2(end.x, start.y), Vector2(end.x, end.y), lineColor, lineWidth)
+		draw_line(Vector2(start.x, end.y), Vector2(end.x, end.y), lineColor, lineWidth)
+
+	if !clipboard.is_empty() && !is_selecting && paste_preview_enabled:
+		var preview_start = get_global_mouse_position() - copied_size / 2
+
+		#draw_rect(
+			#Rect2(preview_start, copied_size),
+			#Color(0, 1, 0, 0.15),
+			#true
+		#)
+
+		draw_rect(
+			Rect2(preview_start, copied_size),
+			Color.GREEN,
+			false,
+			1
+		)

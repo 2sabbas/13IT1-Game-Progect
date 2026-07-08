@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d4cp7qqhtceeu"]
+[gd_scene load_steps=17 format=3 uid="uid://d4cp7qqhtceeu"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_nnwsq"]
 [ext_resource type="Texture2D" uid="uid://ch8t1qxc831na" path="res://Assets/UI/Comand Keys Sprite Sheet.png" id="2_fccik"]
@@ -6,44 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://byiaacouo1cq1" path="res://Assets/UI/WASD Keys.png" id="4_f4sq5"]
 [ext_resource type="FontFile" uid="uid://5qfysv5ujklq" path="res://Theme/Minecraft.ttf" id="4_qmw02"]
 [ext_resource type="Texture2D" uid="uid://bksfvlbfxkjt7" path="res://Assets/UI/Arrow Keys.png" id="5_uv3h6"]
+[ext_resource type="Texture2D" uid="uid://c3vlugx6ac7nq" path="res://Assets/UI/15x16 Keyboard Keys.png" id="7_2e04q"]
 [ext_resource type="Theme" uid="uid://bqlu65r12fskd" path="res://Theme/Si-fi label theme.tres" id="7_qp36d"]
-
-[sub_resource type="Animation" id="Animation_xpm1a"]
-resource_name = "Fade_Out_Controls"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 0.4, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_pmf38"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjaj2"]
-_data = {
-"Fade_Out_Controls": SubResource("Animation_xpm1a"),
-"RESET": SubResource("Animation_pmf38")
-}
 
 [sub_resource type="Animation" id="Animation_8cxas"]
 resource_name = "Fade_out_controls"
@@ -55,8 +19,8 @@ tracks/0/path = NodePath("Controls:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 3),
-"transitions": PackedFloat32Array(1, 0.4, 1),
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
@@ -303,75 +267,72 @@ texture = ExtResource("3_bjfho")
 vframes = 7
 frame = 5
 
-[node name="Controls" type="Label" parent="."]
-layout_mode = 0
-offset_left = 490.0
-offset_top = 80.0
-offset_right = 667.0
-offset_bottom = 259.0
-theme_override_fonts/font = ExtResource("4_qmw02")
-theme_override_font_sizes/font_size = 16
-text = "To Move 
-
-
-To Copy            To Paste
-
-
-To Undo            To Cut
-
-
-To Reload the map"
-horizontal_alignment = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Controls"]
-libraries = {
-"": SubResource("AnimationLibrary_tjaj2")
-}
-autoplay = "Fade_Out_Controls"
+[node name="Controls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
 
 [node name="WASD" type="Sprite2D" parent="Controls"]
-position = Vector2(48, -29)
+position = Vector2(-64, 48)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_f4sq5")
 
 [node name="Arrow Keys" type="Sprite2D" parent="Controls"]
-position = Vector2(144, -29)
+position = Vector2(64, 48)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_uv3h6")
 
 [node name="CTRL C" type="Sprite2D" parent="Controls"]
-position = Vector2(27, 38)
+position = Vector2(-80, 120)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
 vframes = 7
 
 [node name="CTRL V" type="Sprite2D" parent="Controls"]
-position = Vector2(171, 38)
+position = Vector2(80, 120)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
 vframes = 7
 frame = 3
 
 [node name="CTRL Z" type="Sprite2D" parent="Controls"]
-position = Vector2(29, 95)
+position = Vector2(-80, 176)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
 vframes = 7
 frame = 2
 
 [node name="CTRL X" type="Sprite2D" parent="Controls"]
-position = Vector2(173, 95)
+position = Vector2(80, 176)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
 vframes = 7
 frame = 1
 
 [node name="CTRL R" type="Sprite2D" parent="Controls"]
-position = Vector2(101, 152)
+position = Vector2(-80, 232)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
 vframes = 7
 frame = 4
+
+[node name="O" type="Sprite2D" parent="Controls"]
+position = Vector2(48, 232)
+scale = Vector2(2, 2)
+texture = ExtResource("7_2e04q")
+hframes = 5
+vframes = 8
+frame = 14
+
+[node name="P" type="Sprite2D" parent="Controls"]
+position = Vector2(120, 232)
+scale = Vector2(2, 2)
+texture = ExtResource("7_2e04q")
+hframes = 5
+vframes = 8
+frame = 15
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqyac73sq7oi4" path="res://Assets/Sprites/Finish Portal.png" id="1_r72dh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0kt5"]
-radius = 17.0
+radius = 14.0
 height = 40.0
 
 [node name="Finish Portal" type="Area2D"]
@@ -15,7 +15,6 @@ position = Vector2(0, -20)
 texture = ExtResource("1_r72dh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
 shape = SubResource("CapsuleShape2D_s0kt5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
