@@ -262,7 +262,7 @@ vframes = 7
 frame = 5
 
 [node name="Selected Icon" type="Sprite2D" parent="."]
-position = Vector2(244, 201)
+position = Vector2(269, 201)
 texture = ExtResource("3_bjfho")
 vframes = 7
 frame = 5
@@ -276,13 +276,23 @@ grow_horizontal = 2
 
 [node name="WASD" type="Sprite2D" parent="Controls"]
 position = Vector2(-64, 48)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
 texture = ExtResource("4_f4sq5")
 
 [node name="Arrow Keys" type="Sprite2D" parent="Controls"]
 position = Vector2(64, 48)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(2, 2)
 texture = ExtResource("5_uv3h6")
+
+[node name="Movement" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -78.0
+offset_top = 76.0
+offset_right = 78.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+text = "To Move"
+horizontal_alignment = 1
 
 [node name="CTRL C" type="Sprite2D" parent="Controls"]
 position = Vector2(-80, 120)
@@ -296,6 +306,16 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
 vframes = 7
 frame = 3
+
+[node name="Copy_Paste" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -146.0
+offset_top = 140.0
+offset_right = 146.0
+offset_bottom = 175.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+text = "To Copy                   To Paste"
+horizontal_alignment = 1
 
 [node name="CTRL Z" type="Sprite2D" parent="Controls"]
 position = Vector2(-80, 176)
@@ -311,12 +331,32 @@ texture = ExtResource("2_fccik")
 vframes = 7
 frame = 1
 
+[node name="Undo_Cut" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -146.0
+offset_top = 196.0
+offset_right = 146.0
+offset_bottom = 231.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+text = "To Undo                   To Cut"
+horizontal_alignment = 1
+
 [node name="CTRL R" type="Sprite2D" parent="Controls"]
 position = Vector2(-80, 232)
 scale = Vector2(2, 2)
 texture = ExtResource("2_fccik")
 vframes = 7
 frame = 4
+
+[node name="Reload" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -146.0
+offset_top = 252.0
+offset_right = -13.0
+offset_bottom = 287.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+text = "To Reload"
+horizontal_alignment = 1
 
 [node name="O" type="Sprite2D" parent="Controls"]
 position = Vector2(48, 232)
@@ -326,6 +366,17 @@ hframes = 5
 vframes = 8
 frame = 14
 
+[node name="Outlines" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 252.0
+offset_right = 79.0
+offset_bottom = 287.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+text = "Toggle
+Outlines"
+horizontal_alignment = 1
+
 [node name="P" type="Sprite2D" parent="Controls"]
 position = Vector2(120, 232)
 scale = Vector2(2, 2)
@@ -333,6 +384,16 @@ texture = ExtResource("7_2e04q")
 hframes = 5
 vframes = 8
 frame = 15
+
+[node name="Paste Preview" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 252.0
+offset_right = 210.0
+offset_bottom = 306.0
+theme_override_fonts/font = ExtResource("4_qmw02")
+text = "Toggle
+Paste Preview"
 
 [node name="ControlsAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

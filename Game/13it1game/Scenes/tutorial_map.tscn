@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bn3nq68wc5eek"]
+[gd_scene load_steps=16 format=3 uid="uid://bn3nq68wc5eek"]
 
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="1_tqwtp"]
 [ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_qjdhv"]
@@ -22,6 +22,18 @@ glow_bloom = 0.4
 glow_blend_mode = 1
 adjustment_enabled = true
 adjustment_contrast = 1.05
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwxgc"]
+size = Vector2(20, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhs8w"]
+size = Vector2(128, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp81a"]
+size = Vector2(20, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd4yv"]
+size = Vector2(20, 64)
 
 [node name="Tutorial Map" type="Node2D"]
 y_sort_enabled = true
@@ -47,33 +59,116 @@ script = ExtResource("4_f5bqe")
 position = Vector2(111, 233)
 
 [node name="Instructions" parent="." node_paths=PackedStringArray("markers") instance=ExtResource("9_1uuve")]
-markers = [NodePath("../Tutorial Instructions Positions/Marker2D_1"), NodePath("../Tutorial Instructions Positions/Marker2D_2"), NodePath("../Tutorial Instructions Positions/Marker2D_3"), NodePath("../Tutorial Instructions Positions/Marker2D_4"), NodePath("../Tutorial Instructions Positions/Marker2D_5"), NodePath("../Tutorial Instructions Positions/Marker2D_6"), NodePath("../Tutorial Instructions Positions/Marker2D_7"), NodePath("../Tutorial Instructions Positions/Marker2D_8")]
+markers = [NodePath("../Tutorial Instructions Positions/Marker2D_1"), NodePath("../Tutorial Instructions Positions/Marker2D_2"), NodePath("../Tutorial Instructions Positions/Marker2D_3"), NodePath("../Tutorial Instructions Positions/Marker2D_4"), NodePath("../Tutorial Instructions Positions/Marker2D_5"), NodePath("../Tutorial Instructions Positions/Marker2D_6"), NodePath("../Tutorial Instructions Positions/Marker2D_7"), NodePath("../Tutorial Instructions Positions/Marker2D_8"), NodePath("../Tutorial Instructions Positions/Marker2D_9"), NodePath("../Tutorial Instructions Positions/Marker2D_10"), NodePath("../Tutorial Instructions Positions/Marker2D_11"), NodePath("../Tutorial Instructions Positions/Marker2D_12"), NodePath("../Tutorial Instructions Positions/Marker2D_13"), NodePath("../Tutorial Instructions Positions/Marker2D_14"), NodePath("../Tutorial Instructions Positions/Marker2D_15"), NodePath("../Tutorial Instructions Positions/Marker2D_16"), NodePath("../Tutorial Instructions Positions/Marker2D_17"), NodePath("../Tutorial Instructions Positions/Marker2D_18"), NodePath("../Tutorial Instructions Positions/Marker2D_19"), NodePath("../Tutorial Instructions Positions/Marker2D_20"), NodePath("../Tutorial Instructions Positions/Marker2D_21"), NodePath("../Tutorial Instructions Positions/Marker2D_22"), NodePath("../Tutorial Instructions Positions/Marker2D_23"), NodePath("../Tutorial Instructions Positions/Marker2D_24"), NodePath("../Tutorial Instructions Positions/Marker2D_25"), NodePath("../Tutorial Instructions Positions/Marker2D_26"), NodePath("../Tutorial Instructions Positions/Marker2D_27")]
 
 [node name="Tutorial Instructions Positions" type="Node2D" parent="."]
 
 [node name="Marker2D_1" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(336, 233)
+position = Vector2(198, 236)
 
 [node name="Marker2D_2" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(559, 232)
+position = Vector2(255, 235)
 
 [node name="Marker2D_3" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(512, 187)
+position = Vector2(313, 235)
 
 [node name="Marker2D_4" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(512, 92)
+position = Vector2(571, 232)
 
 [node name="Marker2D_5" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(511, 137)
+position = Vector2(514, 184)
 
 [node name="Marker2D_6" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(476, 231)
+position = Vector2(512, 96)
 
 [node name="Marker2D_7" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(523, 232)
+position = Vector2(513, 157)
 
 [node name="Marker2D_8" type="Marker2D" parent="Tutorial Instructions Positions"]
-position = Vector2(570, 231)
+position = Vector2(480, 232)
+
+[node name="Marker2D_9" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(547, 232)
+
+[node name="Marker2D_10" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(571, 232)
+
+[node name="Marker2D_11" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(1032, 366)
+
+[node name="Marker2D_12" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(1031, 497)
+
+[node name="Marker2D_13" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(971, 499)
+
+[node name="Marker2D_14" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(928, 495)
+
+[node name="Marker2D_15" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(970, 499)
+
+[node name="Marker2D_16" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(993, 499)
+
+[node name="Marker2D_17" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(1032, 469)
+
+[node name="Marker2D_18" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(1031, 518)
+
+[node name="Marker2D_19" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(1033, 686)
+
+[node name="Marker2D_20" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(1062, 687)
+
+[node name="Marker2D_21" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(1002, 725)
+
+[node name="Marker2D_22" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(966, 727)
+
+[node name="Marker2D_23" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(849, 727)
+
+[node name="Marker2D_24" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(849, 659)
+
+[node name="Marker2D_25" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(759, 728)
+
+[node name="Marker2D_26" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(701, 729)
+
+[node name="Marker2D_27" type="Marker2D" parent="Tutorial Instructions Positions"]
+position = Vector2(553, 729)
+
+[node name="Instruction Jumps" type="Node2D" parent="."]
+
+[node name="Jump_1" type="Area2D" parent="Instruction Jumps"]
+position = Vector2(950, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instruction Jumps/Jump_1"]
+shape = SubResource("RectangleShape2D_lwxgc")
+
+[node name="Jump_2" type="Area2D" parent="Instruction Jumps"]
+position = Vector2(1040, 634)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instruction Jumps/Jump_2"]
+shape = SubResource("RectangleShape2D_lhs8w")
+
+[node name="Jump_3" type="Area2D" parent="Instruction Jumps"]
+position = Vector2(890, 712)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instruction Jumps/Jump_3"]
+shape = SubResource("RectangleShape2D_qp81a")
+
+[node name="Jump_4" type="Area2D" parent="Instruction Jumps"]
+position = Vector2(714, 736)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instruction Jumps/Jump_4"]
+shape = SubResource("RectangleShape2D_nd4yv")
 
 [node name="Collectables" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -84,7 +179,7 @@ position = Vector2(480, 34)
 type = 1
 
 [node name="Copy2" parent="Collectables" instance=ExtResource("5_scca2")]
-position = Vector2(1053, 208)
+position = Vector2(1054, 226)
 type = 1
 
 [node name="Undo" parent="Collectables" instance=ExtResource("5_scca2")]
@@ -106,4 +201,9 @@ Gate = NodePath("../Gate")
 position = Vector2(728, 706)
 
 [node name="Finish Portal" parent="." instance=ExtResource("10_giyw3")]
-position = Vector2(509, 718)
+position = Vector2(504, 728)
+
+[connection signal="body_entered" from="Instruction Jumps/Jump_1" to="Instructions" method="_on_jump_1_body_entered"]
+[connection signal="body_entered" from="Instruction Jumps/Jump_2" to="Instructions" method="_on_jump_2_body_entered"]
+[connection signal="body_entered" from="Instruction Jumps/Jump_3" to="Instructions" method="_on_jump_3_body_entered"]
+[connection signal="body_entered" from="Instruction Jumps/Jump_4" to="Instructions" method="_on_jump_4_body_entered"]

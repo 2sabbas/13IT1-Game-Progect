@@ -1,0 +1,167 @@
+[gd_scene load_steps=8 format=3 uid="uid://1745c3762tim"]
+
+[ext_resource type="Texture2D" uid="uid://byiaacouo1cq1" path="res://Assets/UI/WASD Keys.png" id="1_kiau6"]
+[ext_resource type="Script" path="res://Scripts/controls.gd" id="1_kr23o"]
+[ext_resource type="Texture2D" uid="uid://bksfvlbfxkjt7" path="res://Assets/UI/Arrow Keys.png" id="2_2c4od"]
+[ext_resource type="FontFile" uid="uid://5qfysv5ujklq" path="res://Theme/Minecraft.ttf" id="3_p5at4"]
+[ext_resource type="Texture2D" uid="uid://ch8t1qxc831na" path="res://Assets/UI/Comand Keys Sprite Sheet.png" id="4_08q5k"]
+[ext_resource type="Texture2D" uid="uid://c3vlugx6ac7nq" path="res://Assets/UI/15x16 Keyboard Keys.png" id="5_eugu2"]
+[ext_resource type="Theme" uid="uid://c7ah7fetrkpfj" path="res://Theme/Base theme.tres" id="7_sml17"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kr23o")
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = -260.0
+offset_bottom = -260.0
+grow_horizontal = 2
+
+[node name="WASD" type="Sprite2D" parent="Controls"]
+position = Vector2(-450.5, 25)
+scale = Vector2(3, 3)
+texture = ExtResource("1_kiau6")
+
+[node name="Arrow Keys" type="Sprite2D" parent="Controls"]
+position = Vector2(-302.5, 25)
+scale = Vector2(3, 3)
+texture = ExtResource("2_2c4od")
+
+[node name="Movement" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -224.0
+offset_top = -17.0
+offset_right = -6.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("3_p5at4")
+theme_override_font_sizes/font_size = 32
+text = "Use WASD or Arrow Keys to move"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CTRL C" type="Sprite2D" parent="Controls"]
+position = Vector2(-423.5, 202)
+scale = Vector2(3, 3)
+texture = ExtResource("4_08q5k")
+vframes = 7
+
+[node name="CTRL V" type="Sprite2D" parent="Controls"]
+position = Vector2(-182.5, 202)
+scale = Vector2(3, 3)
+texture = ExtResource("4_08q5k")
+vframes = 7
+frame = 3
+
+[node name="Copy_Paste" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -288.0
+offset_right = 428.0
+offset_bottom = -253.0
+theme_override_fonts/font = ExtResource("3_p5at4")
+theme_override_font_sizes/font_size = 32
+text = "To Copy                   To Paste"
+horizontal_alignment = 1
+
+[node name="CTRL Z" type="Sprite2D" parent="Controls"]
+position = Vector2(58.5, 202)
+scale = Vector2(3, 3)
+texture = ExtResource("4_08q5k")
+vframes = 7
+frame = 2
+
+[node name="CTRL X" type="Sprite2D" parent="Controls"]
+position = Vector2(299.5, 202)
+scale = Vector2(3, 3)
+texture = ExtResource("4_08q5k")
+vframes = 7
+frame = 1
+
+[node name="Undo_Cut" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -232.0
+offset_right = 392.0
+offset_bottom = -197.0
+theme_override_fonts/font = ExtResource("3_p5at4")
+theme_override_font_sizes/font_size = 32
+text = "To Undo                   To Cut"
+horizontal_alignment = 1
+
+[node name="CTRL R" type="Sprite2D" parent="Controls"]
+position = Vector2(-203.5, 346)
+scale = Vector2(3, 3)
+texture = ExtResource("4_08q5k")
+vframes = 7
+frame = 4
+
+[node name="Reload" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = -30.0
+offset_top = -176.0
+offset_right = 126.0
+offset_bottom = -141.0
+theme_override_fonts/font = ExtResource("3_p5at4")
+theme_override_font_sizes/font_size = 32
+text = "To Reload"
+horizontal_alignment = 1
+
+[node name="O" type="Sprite2D" parent="Controls"]
+position = Vector2(3.5, 346)
+scale = Vector2(3, 3)
+texture = ExtResource("5_eugu2")
+hframes = 5
+vframes = 8
+frame = 14
+
+[node name="Outlines" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -176.0
+offset_right = 256.0
+offset_bottom = -109.0
+theme_override_fonts/font = ExtResource("3_p5at4")
+theme_override_font_sizes/font_size = 32
+text = "Toggle
+Outlines"
+horizontal_alignment = 1
+
+[node name="P" type="Sprite2D" parent="Controls"]
+position = Vector2(144.5, 346)
+scale = Vector2(3, 3)
+texture = ExtResource("5_eugu2")
+hframes = 5
+vframes = 8
+frame = 15
+
+[node name="Paste Preview" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = 214.0
+offset_top = -176.0
+offset_right = 438.0
+offset_bottom = -109.0
+theme_override_fonts/font = ExtResource("3_p5at4")
+theme_override_font_sizes/font_size = 32
+text = "Toggle
+Paste Preview"
+
+[node name="Back" type="Button" parent="."]
+offset_left = -536.0
+offset_top = 247.0
+offset_right = -330.0
+offset_bottom = 284.0
+theme = ExtResource("7_sml17")
+text = "Back"
+
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

@@ -4,7 +4,7 @@ extends Node2D
 var layers_to_copy = ["Editable Regions", "Ysort Editable Regions"]
 @onready var highlighted_layers: Array[TileMapLayer] = []
 var highlight_layer_names = ["Highlights"]
-var highlight_visible = true
+var highlight_visible = false
 const HIGHLIGHT_SOURCE_ID := 4
 const TERRAIN_SET := 0
 const TERRAIN := 2
@@ -33,12 +33,15 @@ func _ready() -> void:
 			tile_layers.append(child)
 		if child is TileMapLayer and child.name in highlight_layer_names:
 			highlighted_layers.append(child)
+	
+	for layer in highlighted_layers:
+		layer.visible = highlight_visible
 	update_highlight()
 
 
 func _input(event: InputEvent) -> void:
 	# start new selection on click - also clears any existing selection
-	if (Input.is_action_just_pressed("left_click")):
+	if (event.is_action_pressed("left_click")):
 		selection_start_point = get_global_mouse_position()
 		selection_end_point = selection_start_point
 		is_selecting = true
@@ -46,7 +49,7 @@ func _input(event: InputEvent) -> void:
 		Global.selected = has_selected
 	# mouse released - freeze the box in place
 	else:
-		if (Input.is_action_just_released("left_click")):
+		if (event.is_action_released("left_click")):
 			selection_end_point = get_global_mouse_position()
 			is_selecting = false
 			if (selection_start_point.distance_to(selection_end_point) > 8):
@@ -55,7 +58,8 @@ func _input(event: InputEvent) -> void:
 			else:
 				selection_start_point = Vector2.ZERO
 				selection_end_point = Vector2.ZERO
-				Global.selected = false
+				has_selected = false
+				Global.selected = has_selected
 	
 	# Copy
 	if Input.is_action_just_pressed("copy") && has_selected && Global.num_of_copies_available > 0:

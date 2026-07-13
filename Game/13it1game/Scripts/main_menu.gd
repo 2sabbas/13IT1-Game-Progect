@@ -24,6 +24,7 @@ func _on_play_world_button_up() -> void:
 
 func _on_controls_button_up() -> void:
 	Global.current_game_state = Global.Game_State.Controls
+	get_tree().change_scene_to_file("res://Scenes/controls.tscn")
 
 
 func _on_quit_button_up() -> void:

@@ -1,20 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3jwp0d7goajo"]
+[gd_scene load_steps=5 format=3 uid="uid://b3jwp0d7goajo"]
 
 [ext_resource type="Script" path="res://Scripts/finish_portal.gd" id="1_ldkhb"]
 [ext_resource type="Texture2D" uid="uid://cqyac73sq7oi4" path="res://Assets/Sprites/Finish Portal.png" id="1_r72dh"]
+[ext_resource type="Texture2D" uid="uid://b5dx2fj8yucy5" path="res://Assets/Lighting/Blue blob glow.png" id="3_u1en0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0kt5"]
-radius = 14.0
-height = 40.0
+radius = 16.0
+height = 64.0
 
 [node name="Finish Portal" type="Area2D"]
 script = ExtResource("1_ldkhb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -20)
 texture = ExtResource("1_r72dh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_s0kt5")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("3_u1en0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
