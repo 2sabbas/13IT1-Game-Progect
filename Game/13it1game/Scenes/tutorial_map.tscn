@@ -207,3 +207,5 @@ position = Vector2(504, 728)
 [connection signal="body_entered" from="Instruction Jumps/Jump_2" to="Instructions" method="_on_jump_2_body_entered"]
 [connection signal="body_entered" from="Instruction Jumps/Jump_3" to="Instructions" method="_on_jump_3_body_entered"]
 [connection signal="body_entered" from="Instruction Jumps/Jump_4" to="Instructions" method="_on_jump_4_body_entered"]
+
+[editable path="Gate"]

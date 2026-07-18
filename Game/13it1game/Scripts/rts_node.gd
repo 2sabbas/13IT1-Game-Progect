@@ -4,7 +4,7 @@ extends Node2D
 var layers_to_copy = ["Editable Regions", "Ysort Editable Regions"]
 @onready var highlighted_layers: Array[TileMapLayer] = []
 var highlight_layer_names = ["Highlights"]
-var highlight_visible = false
+var highlight_visible = true
 const HIGHLIGHT_SOURCE_ID := 4
 const TERRAIN_SET := 0
 const TERRAIN := 2

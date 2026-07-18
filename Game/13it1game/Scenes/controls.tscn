@@ -157,6 +157,7 @@ text = "Toggle
 Paste Preview"
 
 [node name="Back" type="Button" parent="."]
+layout_mode = 0
 offset_left = -536.0
 offset_top = 247.0
 offset_right = -330.0
