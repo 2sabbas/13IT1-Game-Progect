@@ -44,7 +44,6 @@ environment = SubResource("Environment_jjvhh")
 color = Color(0.414892, 0.577673, 0.677901, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("1_ikf48")]
 metadata/_edit_use_anchors_ = true
@@ -71,12 +70,16 @@ position = Vector2(85, 120)
 type = 3
 
 [node name="Copy2" parent="Collectables" instance=ExtResource("5_x5jgr")]
-position = Vector2(96, 673)
+position = Vector2(208, 393)
 type = 1
 
 [node name="Copy3" parent="Collectables" instance=ExtResource("5_x5jgr")]
-position = Vector2(160, 673)
+position = Vector2(128, 721)
 type = 1
+
+[node name="Cut" parent="Collectables" instance=ExtResource("5_x5jgr")]
+position = Vector2(400, 721)
+type = 2
 
 [node name="Boxes" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -86,7 +89,7 @@ position = Vector2(32, 65)
 position = Vector2(200, 76)
 
 [node name="Box2" parent="Boxes" instance=ExtResource("6_pykxj")]
-position = Vector2(400, 725)
+position = Vector2(296, 621)
 
 [node name="Box3" parent="Boxes" instance=ExtResource("6_pykxj")]
 position = Vector2(496, 453)
@@ -127,13 +130,13 @@ position = Vector2(400, 384)
 Gate = NodePath("../Gate3")
 
 [node name="Gate3" parent="Pressure Plate Gates" instance=ExtResource("6_jigkh")]
-position = Vector2(344, 319)
+position = Vector2(344, 287)
 
 [node name="CollisionShape2D" parent="Pressure Plate Gates/Gate3" index="1"]
 shape = SubResource("RectangleShape2D_7l0q0")
 
 [node name="Pressure Plate4" parent="Pressure Plate Gates" node_paths=PackedStringArray("Gate") instance=ExtResource("5_aqp4t")]
-position = Vector2(304, 344)
+position = Vector2(304, 312)
 Gate = NodePath("../Gate4")
 
 [node name="Gate4" parent="Pressure Plate Gates" instance=ExtResource("6_jigkh")]
