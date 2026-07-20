@@ -31,7 +31,7 @@ alignment = 1
 
 [node name="Play Tutorial" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Play Tutorial (Recomended)"
+text = "Play Tutorial (Recommended)"
 
 [node name="Play World" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -44,6 +44,17 @@ text = "Controls"
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 270.0
+offset_right = 683.0
+offset_bottom = 302.0
+rotation = 0.367003
+theme_override_colors/font_color = Color(1, 0.513726, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "NOT FINISHED"
 
 [connection signal="button_up" from="VBoxContainer/Play Tutorial" to="." method="_on_play_tutorial_button_up"]
 [connection signal="button_up" from="VBoxContainer/Play World" to="." method="_on_play_world_button_up"]

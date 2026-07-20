@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj61r4u6i0f8y"]
+
+[ext_resource type="Script" path="res://Scripts/gate.gd" id="1_5dojy"]
+[ext_resource type="Texture2D" uid="uid://cy7laug2n2bnm" path="res://Assets/Sprites/Vertical Pressure Plate Gate.png" id="2_pduat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snxo2"]
+size = Vector2(8, 64)
+
+[node name="Gate" type="StaticBody2D"]
+script = ExtResource("1_5dojy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 22)
+texture = ExtResource("2_pduat")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_snxo2")
