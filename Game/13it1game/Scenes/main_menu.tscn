@@ -38,6 +38,7 @@ layout_mode = 2
 text = "Play World"
 
 [node name="Controls" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Controls"
 
@@ -47,11 +48,12 @@ text = "Quit"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 465.0
-offset_top = 270.0
-offset_right = 683.0
-offset_bottom = 302.0
-rotation = 0.367003
+offset_left = 714.0
+offset_top = 308.0
+offset_right = 932.0
+offset_bottom = 340.0
+rotation = 0.00423613
+scale = Vector2(0.997072, 1.11444)
 theme_override_colors/font_color = Color(1, 0.513726, 0, 1)
 theme_override_font_sizes/font_size = 32
 text = "NOT FINISHED"
