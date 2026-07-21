@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://3ovfae3infse" path="res://Scenes/box.tscn" id="6_rhj13"]
 [ext_resource type="PackedScene" uid="uid://bpri8nt4j7w3v" path="res://Scenes/pressure_plate.tscn" id="7_djr2s"]
 [ext_resource type="PackedScene" uid="uid://cwfql7iuk7wmh" path="res://Scenes/instruction.tscn" id="9_1uuve"]
-[ext_resource type="PackedScene" path="res://Scenes/gate.tscn" id="9_6kqb7"]
+[ext_resource type="PackedScene" uid="uid://cj61r4u6i0f8y" path="res://Scenes/gate.tscn" id="9_6kqb7"]
 [ext_resource type="PackedScene" uid="uid://b3jwp0d7goajo" path="res://Scenes/finish_portal.tscn" id="10_giyw3"]
 
 [sub_resource type="Environment" id="Environment_jjvhh"]

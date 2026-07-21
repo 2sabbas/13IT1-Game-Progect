@@ -18,7 +18,7 @@ var instructions: Array = [
 	# Intro (3)
 	"Welcome to COMMAND LINE. Press Enter to continue.",
 	"In COMMAND LINE, you solve puzzles using keyboard shortcuts.",
-	"Reach the exit portal to complete the level.",
+	"This tutorial will teach you the basic core mechanics of COMMAND LINE.",
 
 	# Puzzle 1 - Copy (7)
 	"You need to cross the water.",

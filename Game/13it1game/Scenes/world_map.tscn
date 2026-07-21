@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/rts_node.gd" id="4_w1i7g"]
 [ext_resource type="PackedScene" uid="uid://bpri8nt4j7w3v" path="res://Scenes/pressure_plate.tscn" id="5_aqp4t"]
 [ext_resource type="PackedScene" uid="uid://db4x25ak0mpwr" path="res://Scenes/collectable.tscn" id="5_x5jgr"]
-[ext_resource type="PackedScene" path="res://Scenes/gate.tscn" id="6_jigkh"]
+[ext_resource type="PackedScene" uid="uid://cj61r4u6i0f8y" path="res://Scenes/gate.tscn" id="6_jigkh"]
 [ext_resource type="PackedScene" uid="uid://3ovfae3infse" path="res://Scenes/box.tscn" id="6_pykxj"]
 [ext_resource type="Texture2D" uid="uid://dwtw0pemsa2x" path="res://Assets/Sprites/Horizontal Pressure Plate Gate.png" id="7_mg7oh"]
 
