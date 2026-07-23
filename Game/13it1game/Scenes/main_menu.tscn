@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d41s4qjwhoy2"]
+[gd_scene load_steps=4 format=3 uid="uid://d41s4qjwhoy2"]
 
 [ext_resource type="Theme" uid="uid://c7ah7fetrkpfj" path="res://Theme/Base theme.tres" id="1_28flt"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="2_48xlc"]
+[ext_resource type="Texture2D" uid="uid://do8ublq5fil10" path="res://Assets/UI/COMMAND LINE menu.png" id="3_qqjfn"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -12,6 +13,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_28flt")
 script = ExtResource("2_48xlc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("3_qqjfn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -45,18 +50,6 @@ text = "Controls"
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 714.0
-offset_top = 308.0
-offset_right = 932.0
-offset_bottom = 340.0
-rotation = 0.00423613
-scale = Vector2(0.997072, 1.11444)
-theme_override_colors/font_color = Color(1, 0.513726, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "NOT FINISHED"
 
 [connection signal="button_up" from="VBoxContainer/Play Tutorial" to="." method="_on_play_tutorial_button_up"]
 [connection signal="button_up" from="VBoxContainer/Play World" to="." method="_on_play_world_button_up"]

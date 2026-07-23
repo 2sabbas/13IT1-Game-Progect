@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfg8bs0kfn0n2"]
+[gd_scene load_steps=18 format=3 uid="uid://cfg8bs0kfn0n2"]
 
 [ext_resource type="PackedScene" uid="uid://d4cp7qqhtceeu" path="res://Scenes/hud.tscn" id="1_ikf48"]
 [ext_resource type="PackedScene" uid="uid://cvh8p6d7jfhye" path="res://Scenes/map.tscn" id="2_ecn11"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cj61r4u6i0f8y" path="res://Scenes/gate.tscn" id="6_jigkh"]
 [ext_resource type="PackedScene" uid="uid://3ovfae3infse" path="res://Scenes/box.tscn" id="6_pykxj"]
 [ext_resource type="Texture2D" uid="uid://dwtw0pemsa2x" path="res://Assets/Sprites/Horizontal Pressure Plate Gate.png" id="7_mg7oh"]
+[ext_resource type="PackedScene" uid="uid://b3jwp0d7goajo" path="res://Scenes/finish_portal.tscn" id="10_8qn1e"]
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 3
@@ -33,6 +34,12 @@ size = Vector2(8, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hr6o"]
 size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2fhb"]
+size = Vector2(8, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwkp5"]
+size = Vector2(8, 64)
 
 [node name="World Map" type="Node2D"]
 y_sort_enabled = true
@@ -77,13 +84,17 @@ type = 1
 position = Vector2(128, 721)
 type = 1
 
-[node name="Cut" parent="Collectables" instance=ExtResource("5_x5jgr")]
-position = Vector2(544, 34)
-type = 2
+[node name="Copy 4" parent="Collectables" instance=ExtResource("5_x5jgr")]
+position = Vector2(672, 194)
+type = 1
 
 [node name="Undo2" parent="Collectables" instance=ExtResource("5_x5jgr")]
 position = Vector2(592, 33)
 type = 3
+
+[node name="Cut" parent="Collectables" instance=ExtResource("5_x5jgr")]
+position = Vector2(1072, 193)
+type = 2
 
 [node name="Boxes" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -93,10 +104,19 @@ position = Vector2(32, 65)
 position = Vector2(200, 76)
 
 [node name="Box2" parent="Boxes" instance=ExtResource("6_pykxj")]
-position = Vector2(296, 621)
+position = Vector2(288, 621)
 
 [node name="Box3" parent="Boxes" instance=ExtResource("6_pykxj")]
 position = Vector2(496, 453)
+
+[node name="Box4" parent="Boxes" instance=ExtResource("6_pykxj")]
+position = Vector2(600, 557)
+
+[node name="Box5" parent="Boxes" instance=ExtResource("6_pykxj")]
+position = Vector2(1088, 757)
+
+[node name="Box6" parent="Boxes" instance=ExtResource("6_pykxj")]
+position = Vector2(1088, 597)
 
 [node name="Pressure Plate Gates" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -156,7 +176,55 @@ vframes = 2
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_1hr6o")
 
+[node name="Pressure Plate5" parent="Pressure Plate Gates" node_paths=PackedStringArray("Gate") instance=ExtResource("5_aqp4t")]
+position = Vector2(520, 641)
+Gate = NodePath("../Gate5")
+
+[node name="Gate5" parent="Pressure Plate Gates" instance=ExtResource("6_jigkh")]
+position = Vector2(808, 410)
+
+[node name="CollisionShape2D" parent="Pressure Plate Gates/Gate5" index="1"]
+shape = SubResource("RectangleShape2D_f2fhb")
+
+[node name="Pressure Plate6" parent="Pressure Plate Gates" node_paths=PackedStringArray("Gate") instance=ExtResource("5_aqp4t")]
+position = Vector2(640, 729)
+Gate = NodePath("../Gate6")
+
+[node name="Gate6" parent="Pressure Plate Gates" instance=ExtResource("6_jigkh")]
+position = Vector2(544, 623)
+
+[node name="CollisionShape2D" parent="Pressure Plate Gates/Gate6" index="1"]
+shape = SubResource("RectangleShape2D_f2fhb")
+
+[node name="Pressure Plate7" parent="Pressure Plate Gates" node_paths=PackedStringArray("Gate") instance=ExtResource("5_aqp4t")]
+position = Vector2(1088, 711)
+Gate = NodePath("../Gate7")
+
+[node name="Gate7" parent="Pressure Plate Gates" instance=ExtResource("6_jigkh")]
+position = Vector2(928, 641)
+
+[node name="CollisionShape2D" parent="Pressure Plate Gates/Gate7" index="1"]
+shape = SubResource("RectangleShape2D_fwkp5")
+
+[node name="Pressure Plate8" parent="Pressure Plate Gates" node_paths=PackedStringArray("Gate") instance=ExtResource("5_aqp4t")]
+position = Vector2(1088, 615)
+Gate = NodePath("../Gate8")
+
+[node name="Gate8" parent="Pressure Plate Gates" instance=ExtResource("6_jigkh")]
+position = Vector2(944, 641)
+
+[node name="CollisionShape2D" parent="Pressure Plate Gates/Gate8" index="1"]
+shape = SubResource("RectangleShape2D_fwkp5")
+
+[node name="Finish Portal" parent="." instance=ExtResource("10_8qn1e")]
+position = Vector2(1040, 731)
+rotation = 3.14159
+
 [editable path="Pressure Plate Gates/Gate"]
 [editable path="Pressure Plate Gates/Gate2"]
 [editable path="Pressure Plate Gates/Gate3"]
 [editable path="Pressure Plate Gates/Gate4"]
+[editable path="Pressure Plate Gates/Gate5"]
+[editable path="Pressure Plate Gates/Gate6"]
+[editable path="Pressure Plate Gates/Gate7"]
+[editable path="Pressure Plate Gates/Gate8"]
