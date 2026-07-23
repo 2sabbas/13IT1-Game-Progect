@@ -21,7 +21,7 @@ var instructions: Array = [
 	"This tutorial will teach you the basic core mechanics of COMMAND LINE.",
 
 	# Puzzle 1 - Copy (7)
-	"You need to cross the water.",
+	"You need to cross the water. DO NOT TOUCH THE WATER! Water is dangerous.",
 	"Collect the Copy Charge ahead.",
 	"Your Copy counter has increased. You can now copy one object.",
 	"Press O to toggle editable outlines.",

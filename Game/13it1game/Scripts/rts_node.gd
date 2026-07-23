@@ -9,10 +9,9 @@ const HIGHLIGHT_SOURCE_ID := 4
 const TERRAIN_SET := 0
 const TERRAIN := 2
 
-@onready var walkable_detector: TileMapLayer = get_parent().get_node("Map/Walkable Detector")
-const WALKABLE_SOURCE_ID := 1
+@onready var bridge_detector: TileMapLayer
 const DETECTOR_SOURCE_ID := 5
-const DETECTOR_ATLAS_COORDS := Vector2i(0, 0)
+const DETECTOR_ATLAS := Vector2i(0, 0)
 
 var selection_start_point = Vector2.ZERO
 var selection_end_point = Vector2.ZERO
@@ -33,17 +32,28 @@ func _ready() -> void:
 	Global.selected = Global.initial_selected
 	
 	var map = get_parent().get_node("Map")
+	bridge_detector = map.get_node("Bridge Detector")
 	for child in map.get_children():
 		if child is TileMapLayer and child.name in layers_to_copy:
 			tile_layers.append(child)
 		if child is TileMapLayer and child.name in highlight_layer_names:
 			highlighted_layers.append(child)
 	
-	build_walkable_detector()
-	
 	for layer in highlighted_layers:
 		layer.visible = highlight_visible
 	update_highlight()
+	build_bridge_detector()
+
+
+func build_bridge_detector():
+	bridge_detector.clear()
+	
+	for cell in tile_layers[0].get_used_cells():
+		bridge_detector.set_cell(
+			cell,
+			DETECTOR_SOURCE_ID,
+			DETECTOR_ATLAS
+		)
 
 
 func _input(event: InputEvent) -> void:
@@ -188,7 +198,6 @@ func paste_objects():
 		})
 		
 		layer.set_cell(target_cell, item["source_id"], item["atlas_coords"], item["alternative"])
-		update_walkable_detector(target_cell)
 	
 	undo_history.append({
 		"snapshot": snapshot, 
@@ -197,6 +206,7 @@ func paste_objects():
 	})
 	
 	update_highlight()
+	build_bridge_detector()
 	clipboard.clear()	
 
 
@@ -216,7 +226,6 @@ func cut():
 			"alternative": layer.get_cell_alternative_tile(cell)
 		})
 		item["layer"].erase_cell(cell)
-		update_walkable_detector(cell)
 	
 	undo_history.append({
 		"snapshot": snapshot, 
@@ -225,6 +234,7 @@ func cut():
 	})
 	
 	update_highlight()
+	build_bridge_detector()
 
 
 func undo():
@@ -242,10 +252,10 @@ func undo():
 			layer.erase_cell(tile["cell"])
 		else:
 			layer.set_cell(tile["cell"], tile["source_id"], tile["atlas_coords"], tile["alternative"])
-		update_walkable_detector(tile["cell"])
 		changed_cells.append(tile["cell"])
 	
 	update_highlight()
+	build_bridge_detector()
 	
 	if last_action["action"] == "copy":
 		clipboard.clear()
@@ -256,27 +266,6 @@ func undo():
 	if last_action["action"] == "paste":
 		clipboard = last_action["clipboard"]
 	Global.num_of_undos_available -= 1
-
-
-func update_walkable_detector(cell: Vector2i) -> void:
-	var editable_layer = tile_layers[0] # Editable Regions
-	
-	if editable_layer.get_cell_source_id(cell) == WALKABLE_SOURCE_ID:
-		walkable_detector.set_cell(
-			cell,
-			DETECTOR_SOURCE_ID,
-			DETECTOR_ATLAS_COORDS
-		)
-	else:
-		walkable_detector.erase_cell(cell)
-
-
-func build_walkable_detector() -> void:
-	walkable_detector.clear()
-	var editable_layer = tile_layers[0]
-	
-	for cell in editable_layer.get_used_cells():
-		update_walkable_detector(cell)
 
 
 func update_highlight() -> void:

@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var speed = 80
 var cur_dir = "none"
 
+@onready var water_layer: TileMapLayer = $"../Map/Water"
+@onready var bridge_detector: TileMapLayer = $"../Map/Bridge Detector"
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -12,9 +14,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	player_moment(delta)
-	
+
 	if move_and_slide():
 		resolve_collision()
+
+	check_water()
 
 
 func resolve_collision():
@@ -23,6 +27,20 @@ func resolve_collision():
 		var body := collision.get_collider() as MovableObject
 		if body:
 			body.apply_impact(velocity)
+
+
+func check_water() -> void:
+	var cell = water_layer.local_to_map(
+		water_layer.to_local(global_position)
+	)
+
+	# Not standing on water
+	if water_layer.get_cell_source_id(cell) == -1:
+		return
+
+	# Standing on water without a bridge
+	if bridge_detector.get_cell_source_id(cell) == -1:
+		get_tree().reload_current_scene()
 
 
 func player_moment(delta):
