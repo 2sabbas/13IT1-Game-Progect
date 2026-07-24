@@ -1,6 +1,8 @@
 extends Control
 
 @onready var controls_animation_player: AnimationPlayer = $ControlsAnimationPlayer
+@onready var help_menu: Control = $"Help Menu"
+var show_help_menu = false
 
 @onready var instruction_animation_player: AnimationPlayer = $InstructionAnimationPlayer
 @onready var instructions: Label = $Instructions
@@ -21,16 +23,16 @@ extends Control
 @onready var selected_icon: Sprite2D = $"Selected Icon"
 
 func _ready() -> void:
-	pass
+	controls_animation_player.play("Fade_out_controls")
+	help_menu.visible = show_help_menu
 
 
 var temp_instruction_visible = Global.instruction_visible
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("help"):
-		controls_animation_player.play("RESET")
-	if Input.is_action_just_released("help"):
-		controls_animation_player.play("Fade_out_controls")
+		show_help_menu = !show_help_menu
+		help_menu.visible = show_help_menu
 	
 	
 	copies_available.text = str(Global.num_of_copies_available)
